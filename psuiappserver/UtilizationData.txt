@@ -1,0 +1,5 @@
+UtilizationData [ServiceNamenulltime=1397098600, value=5.9524951340e+06, valueUnits=Bps]
+UtilizationData [ServiceNamenulltime=1397091700, value=6.2657325017e+06, valueUnits=Bps]
+UtilizationData [ServiceNamenulltime=1397086300, value=6.2050264800e+06, valueUnits=Bps]
+UtilizationData [ServiceNamenulltime=1397098100, value=6.3351806180e+06, valueUnits=Bps]
+UtilizationData [ServiceNamenulltime=1397092600, value=7.5526404050e+06, valueUnits=Bps]

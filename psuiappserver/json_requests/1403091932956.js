@@ -1,0 +1,1 @@
+{"FeatureName":"ThroughputGetData","Service":null,"SourceInterface":"91.210.88.64","DestinationInterface":"193.190.198.63","StartTime":"2014-06-17 14-23-00-000","EndTime":"2014-06-18 14-23-00-000","GetNonCachedData":true}

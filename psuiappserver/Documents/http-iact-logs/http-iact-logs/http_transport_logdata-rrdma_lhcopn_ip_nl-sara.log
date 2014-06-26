@@ -1,0 +1,842 @@
+http request/response log (time=1365422842)
+
+http request/response log (time=1365422652)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://p-mdm.lhcopn-ps.sara.nl:8080/geant2-java-rrd-ma/services/MeasurementArchiveService
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 14156
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <errors:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/1</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">206.12.9.46</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <errors:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/1</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">206.12.9.46</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+      
+      <nmwg:metadata id="metadata3">
+        <errors:subject id="subject3">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/3</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">198.151.133.141</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata3-2">
+        <select:subject metadataIdRef="metadata3" id="subject3-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param3-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata3-2" id="data3" />
+      
+      <nmwg:metadata id="metadata4">
+        <errors:subject id="subject4">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/3</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">198.151.133.141</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata4-2">
+        <select:subject metadataIdRef="metadata4" id="subject4-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param4-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata4-2" id="data4" />
+      
+      <nmwg:metadata id="metadata5">
+        <errors:subject id="subject5">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/9</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata5-2">
+        <select:subject metadataIdRef="metadata5" id="subject5-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param5-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata5-2" id="data5" />
+      
+      <nmwg:metadata id="metadata6">
+        <errors:subject id="subject6">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/9</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata6-2">
+        <select:subject metadataIdRef="metadata6" id="subject6-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param6-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata6-2" id="data6" />
+      
+      <nmwg:metadata id="metadata7">
+        <errors:subject id="subject7">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata7-2">
+        <select:subject metadataIdRef="metadata7" id="subject7-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param7-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata7-2" id="data7" />
+      
+      <nmwg:metadata id="metadata8">
+        <errors:subject id="subject8">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata8-2">
+        <select:subject metadataIdRef="metadata8" id="subject8-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param8-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata8-2" id="data8" />
+      
+      <nmwg:metadata id="metadata9">
+        <errors:subject id="subject9">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.74</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata9-2">
+        <select:subject metadataIdRef="metadata9" id="subject9-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param9-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata9-2" id="data9" />
+      
+      <nmwg:metadata id="metadata10">
+        <errors:subject id="subject10">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.74</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata10-2">
+        <select:subject metadataIdRef="metadata10" id="subject10-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param10-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata10-2" id="data10" />
+      
+      <nmwg:metadata id="metadata11">
+        <errors:subject id="subject11">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/2/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.106</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata11-2">
+        <select:subject metadataIdRef="metadata11" id="subject11-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param11-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata11-2" id="data11" />
+      
+      <nmwg:metadata id="metadata12">
+        <errors:subject id="subject12">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/2/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.106</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata12-2">
+        <select:subject metadataIdRef="metadata12" id="subject12-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param12-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata12-2" id="data12" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 500
+response 1 msg: 'Can't connect to p-mdm.lhcopn-ps.sara.nl:8080 (Connection timed out)'
+response 1 header: 'client-warning : Internal response
+client-date : Mon, 08 Apr 2013 12:04:12 GMT
+content-type : text/plain
+'
+response 1 content: 'Can't connect to p-mdm.lhcopn-ps.sara.nl:8080 (Connection timed out)
+
+LWP::Protocol::http::Socket: connect: Connection timed out at /usr/lib/perl5/site_perl/5.10.0/LWP/Protocol/http.pm line 51.
+'
+----------------------------------------------------------
+http request/response log (time=1365422842)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://p-mdm.lhcopn-ps.sara.nl:8080/geant2-java-rrd-ma/services/MeasurementArchiveService
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 14228
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <discards:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/1</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">206.12.9.46</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <discards:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/1</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">206.12.9.46</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+      
+      <nmwg:metadata id="metadata3">
+        <discards:subject id="subject3">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/3</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">198.151.133.141</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata3-2">
+        <select:subject metadataIdRef="metadata3" id="subject3-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param3-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata3-2" id="data3" />
+      
+      <nmwg:metadata id="metadata4">
+        <discards:subject id="subject4">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/3</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">198.151.133.141</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata4-2">
+        <select:subject metadataIdRef="metadata4" id="subject4-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param4-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata4-2" id="data4" />
+      
+      <nmwg:metadata id="metadata5">
+        <discards:subject id="subject5">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/9</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata5-2">
+        <select:subject metadataIdRef="metadata5" id="subject5-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param5-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata5-2" id="data5" />
+      
+      <nmwg:metadata id="metadata6">
+        <discards:subject id="subject6">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/9</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata6-2">
+        <select:subject metadataIdRef="metadata6" id="subject6-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param6-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata6-2" id="data6" />
+      
+      <nmwg:metadata id="metadata7">
+        <discards:subject id="subject7">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata7-2">
+        <select:subject metadataIdRef="metadata7" id="subject7-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param7-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata7-2" id="data7" />
+      
+      <nmwg:metadata id="metadata8">
+        <discards:subject id="subject8">
+          <nmwgt:interface>
+            <nmwgt:ifName>ge-0/0/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">117.103.111.185</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata8-2">
+        <select:subject metadataIdRef="metadata8" id="subject8-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param8-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata8-2" id="data8" />
+      
+      <nmwg:metadata id="metadata9">
+        <discards:subject id="subject9">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.74</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata9-2">
+        <select:subject metadataIdRef="metadata9" id="subject9-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param9-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata9-2" id="data9" />
+      
+      <nmwg:metadata id="metadata10">
+        <discards:subject id="subject10">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.74</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata10-2">
+        <select:subject metadataIdRef="metadata10" id="subject10-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param10-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata10-2" id="data10" />
+      
+      <nmwg:metadata id="metadata11">
+        <discards:subject id="subject11">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/2/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.106</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata11-2">
+        <select:subject metadataIdRef="metadata11" id="subject11-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param11-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata11-2" id="data11" />
+      
+      <nmwg:metadata id="metadata12">
+        <discards:subject id="subject12">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/2/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.106</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata12-2">
+        <select:subject metadataIdRef="metadata12" id="subject12-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param12-2">
+          <nmwg:parameter name="startTime">1365421800</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata12-2" id="data12" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 500
+response 1 msg: 'Can't connect to p-mdm.lhcopn-ps.sara.nl:8080 (Connection timed out)'
+response 1 header: 'client-warning : Internal response
+client-date : Mon, 08 Apr 2013 12:07:22 GMT
+content-type : text/plain
+'
+response 1 content: 'Can't connect to p-mdm.lhcopn-ps.sara.nl:8080 (Connection timed out)
+
+LWP::Protocol::http::Socket: connect: Connection timed out at /usr/lib/perl5/site_perl/5.10.0/LWP/Protocol/http.pm line 51.
+'
+----------------------------------------------------------

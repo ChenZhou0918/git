@@ -1,0 +1,821 @@
+\documentclass[a4paper,12pt,titlepage,hidelinks,fleqn]{article}
+\author{Clemens Schlei, Florian Rueffer}
+\title{Documentation perfSONAR-Protocol}
+\usepackage{listings,color,framed,float,hyperref}
+\usepackage[T1]{fontenc}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape,
+  tabsize=2
+}
+\lstdefinelanguage{XML}
+{
+  basicstyle=\scriptsize\ttfamily\color{darkblue}\bfseries,
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},  
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  breaklines=true  
+}
+\floatstyle{plain}
+\newfloat{Block}{H}{myc}
+\begin{document}
+\lstset{language=XML}
+\maketitle
+\tableofcontents
+\newpage
+\section{Introduction}
+\begin{flushleft}
+This document gives a short introduction of the part of the perfSONAR protocol used by our server. This document isn't complete, because some parts of the protocol we ourselves don't understand.
+\end{flushleft}
+\section{General structure of the protocol}
+\begin{flushleft}
+"perfSONAR services exchange NMWG messages. The NMWG schema is not only used to describe measurement data, but also to exchange those data between services. These messages are carried in a SOAP message, carried over HTTP." \\
+Quote from \href{http://www.perfsonar.net/protocols.html}{http://www.perfsonar.net/protocols.html}.
+\begin{Block}
+A SOAP message is a type of xml with the following base structure:
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{Block}
+\begin{Block}
+The perfSONAR NMWG message is inserted into the body element with at least the following namespaces:
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope ...>
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>    
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" type="">
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{Block}
+
+The "type" attribute sets the type of message we want to send and can have the following values:\\
+"MetadataKeyRequest"\\
+"SetupDataRequest"\\
+"MetadataKeyResponse"\\
+"SetupDataResponse"\newline
+
+Every time we want to request measurement data, the type attribute is set to "SetupDataRequest".
+The "MetadataKeyRequest" is sometimes used in requests for available interfaces.\newline
+
+Every element inside a message has a unique id and related elements are linked by id.
+A message element contains at least one metadata element which describes the type of data we want to fetch. Metadata elements can be divided into two, each one containing different information. Depending on the service used each metadata element also needs a data element. Here an incomplete example for a HADES MA message requesting a list of interfaces, containing two linked metadata elements and a related data element:
+\begin{Block}
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope ...>
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>    
+		<nmwg:message ... type="SetupDataRequest">
+			<nmwg:metadata id="metadata1">
+				<hades:subject id="subject1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param1"> 
+					<nmwg:parameter name="precedence" value="0x0"/>   	          
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">  
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>  	         
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>		
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{Block}
+The "subject" elements contain information about interfaces. An empty subject-element or an empty subelement of subject is in most cases interpreted as a request for a list of interfaces which satisfy the criteria defined in a parameters-element. Other configuration parameter, such as format definitions for measurement data, are also nested into a parameters-element. Parameter with the names "startTime" and "endTime" always define the start/end time of a measurement period. Time values are in unix time format by default.
+\end{flushleft}
+
+\section{Structure for HADES MA service}
+\begin{flushleft}
+The HADES MA service manages one way delay, jitter, loss and traceroute data which is measured between two interfaces. The following subsections contain valid soap examples for the corresponding requests or responses.  
+\end{flushleft}
+\subsection{Request interface list}
+\begin{flushleft}
+The following example queries a list of interfaces for a specific time interval.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:hades="http://ggf.org/ns/nmwg/tools/hades/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/" type="SetupDataRequest">
+			<nmwg:metadata id="metadata1">
+				<hades:subject id="subject1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param1">
+					<nmwg:parameter name="precedence" value="0x0"/>
+					<nmwg:parameter name="groupsize" value="9"/>
+					<nmwg:parameter name="interval" value="60"/>
+					<nmwg:parameter name="packetsize" value="41"/>
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367359365</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+The "interval" parameter defines the measurement interval in seconds. For example an interval of 60 returns measurement data measured each minute.
+\end{flushleft}
+\subsection{Response interface list}
+\begin{flushleft}
+And here the response to prior request. 
+Metadata elements with an id starting with "result" are containing data about an interface pair. This example is shortened to two response interface pairs and would normally contain more "result" metadata elements.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:hades="http://ggf.org/ns/nmwg/tools/hades/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/" xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/" type="SetupDataResponse">
+				<nmwg:metadata id="metadata1">
+				<hades:subject id="subject1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param1">
+					<nmwg:parameter name="precedence" value="0x0"/>
+					<nmwg:parameter name="groupsize" value="9"/>
+					<nmwg:parameter name="interval" value="60"/>
+					<nmwg:parameter name="packetsize" value="41"/>
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367359365</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>			
+			
+			<nmwg:metadata id="result0">
+				<nmwg:parameters id="param1">
+					<nmwg:parameter value="Garching_DFN" name="receiver"/>
+					<nmwg:parameter value="9" name="groupsize"/>
+					<nmwg:parameter value="60" name="interval"/>
+					<nmwg:parameter value="14430" name="mid"/>
+					<nmwg:parameter value="0x0" name="precedence"/>
+					<nmwg:parameter value="188.1.37.18" name="receiver_ip"/>
+					<nmwg:parameter value="Chemnitz_DFN" name="sender"/>
+					<nmwg:parameter value="188.1.228.9" name="sender_ip"/>
+					<nmwg:parameter value="41" name="packetsize"/>
+				</nmwg:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="result1">
+				<nmwg:parameters id="param1">
+					<nmwg:parameter value="Garching_MPI" name="receiver"/>
+					<nmwg:parameter value="9" name="groupsize"/>
+					<nmwg:parameter value="60" name="interval"/>
+					<nmwg:parameter value="14431" name="mid"/>
+					<nmwg:parameter value="0x0" name="precedence"/>
+					<nmwg:parameter value="130.183.9.11" name="receiver_ip"/>
+					<nmwg:parameter value="Chemnitz_DFN" name="sender"/>
+					<nmwg:parameter value="188.1.228.9" name="sender_ip"/>
+					<nmwg:parameter value="41" name="packetsize"/>
+				</nmwg:parameters>
+			</nmwg:metadata>
+			
+			...
+								  
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Request data for interface}
+\begin{flushleft}
+With part of the data obtained in the previous response we can now query for measurement data. 
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:hades="http://ggf.org/ns/nmwg/tools/hades/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/" type="SetupDataRequest">
+			<nmwg:metadata id="metadata1">
+				<hades:subject id="subject1">
+					<nmwgt:endPointPair>
+						<nmwgt:src type="IFName" value="Chemnitz_DFN"/>
+						<nmwgt:dst type="IFName" value="Garching_DFN"/>
+					</nmwgt:endPointPair>
+				</hades:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param1">
+					<nmwg:parameter name="precedence" value="0x0"/>
+					<nmwg:parameter name="groupsize" value="9"/>
+					<nmwg:parameter name="interval" value="60"/>
+					<nmwg:parameter name="packetsize" value="41"/>
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>				
+				<select:parameters id="param1-2"> 
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367359365</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>
+			
+			<nmwg:metadata id="metadata2">
+				<hades:subject id="subject2">
+					<nmwgt:endPointPair>
+						<nmwgt:src type="IFName" value="Chemnitz_DFN"/>
+						<nmwgt:dst type="IFName" value="Garching_MPI"/>
+					</nmwgt:endPointPair>
+				</hades:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param2">
+					<nmwg:parameter name="precedence" value="0x0"/>
+					<nmwg:parameter name="groupsize" value="9"/>
+					<nmwg:parameter name="interval" value="60"/>
+					<nmwg:parameter name="packetsize" value="41"/>
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata2-2">
+				<select:subject id="subject2-2" metadataIdRef="metadata2"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param2-2">
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367359365</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data2" metadataIdRef="metadata2-2"/>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Response data for interface}
+\begin{flushleft}
+The interfaces and data are ordered the same as in the sent request. 
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:hades="http://ggf.org/ns/nmwg/tools/hades/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/" type="SetupDataResponse">
+			<nmwg:metadata id="metadata1">
+				<hades:subject id="subject1">
+					<nmwgt:endPointPair>
+						<nmwgt:src type="IFName" value="Chemnitz_DFN"/>
+						<nmwgt:dst type="IFName" value="Garching_DFN"/>
+					</nmwgt:endPointPair>
+				</hades:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param1">
+					<nmwg:parameter name="precedence" value="0x0"/>
+					<nmwg:parameter name="groupsize" value="9"/>
+					<nmwg:parameter name="interval" value="60"/>
+					<nmwg:parameter name="packetsize" value="41"/>
+					<nmwg:parameter value="Garching_DFN" name="receiver"/>
+					<nmwg:parameter value="14430" name="mid"/>
+					<nmwg:parameter value="188.1.37.18" name="receiver_ip"/>
+					<nmwg:parameter value="Chemnitz_DFN" name="sender"/>
+					<nmwg:parameter value="188.1.228.9" name="sender_ip"/>
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367359365</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2">
+				<datum xmlns="http://ggf.org/ns/nwmg/tools/hades/aggregated" med_delay="0.00644707679748535" med_ipdv_jitter="-4.05311584472656e-06" min_ipdv_jitter="-1.50203704833984e-05" time="1367359261.04248" sync="yes" min_delay="0.00644302368164062" max_delay="0.00646305084228516" duplicates="0" loss="0" max_ipdv_jitter="1.50203704833984e-05"/>
+				<datum xmlns="http://ggf.org/ns/nwmg/tools/hades/aggregated" med_delay="0.00644898414611816" med_ipdv_jitter="9.5367431640625e-07" min_ipdv_jitter="-1.19209289550781e-05" time="1367359321.04104" sync="yes" min_delay="0.00644111633300781" max_delay="0.0064549446105957" duplicates="0" loss="0" max_ipdv_jitter="1.09672546386719e-05"/>
+			</nmwg:data>
+			
+			<nmwg:metadata id="metadata2">
+				<hades:subject id="subject2">
+					<nmwgt:endPointPair>
+						<nmwgt:src type="IFName" value="Chemnitz_DFN"/>
+						<nmwgt:dst type="IFName" value="Garching_MPI"/>
+					</nmwgt:endPointPair>
+				</hades:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/hades/</nmwg:eventType>
+				<hades:parameters id="param2">
+					<nmwg:parameter name="precedence" value="0x0"/>
+					<nmwg:parameter name="groupsize" value="9"/>
+					<nmwg:parameter name="interval" value="60"/>
+					<nmwg:parameter name="packetsize" value="41"/>
+					<nmwg:parameter value="Garching_MPI" name="receiver"/>
+					<nmwg:parameter value="14431" name="mid"/>
+					<nmwg:parameter value="130.183.9.11" name="receiver_ip"/>
+					<nmwg:parameter value="Chemnitz_DFN" name="sender"/>
+					<nmwg:parameter value="188.1.228.9" name="sender_ip"/>
+				</hades:parameters>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata2-2">
+				<select:subject id="subject2-2" metadataIdRef="metadata2"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param2-2">
+					<nmwg:parameter name="startTime">1367359245</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367359365</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data2" metadataIdRef="metadata2-2">
+				<datum xmlns="http://ggf.org/ns/nwmg/tools/hades/aggregated" med_delay="0.00539112091064453" med_ipdv_jitter="9.5367431640625e-07" min_ipdv_jitter="-8.10623168945312e-06" time="1367359263.0215" sync="yes" min_delay="0.0053870677947998" max_delay="0.00540304183959961" duplicates="0" loss="0" max_ipdv_jitter="1.21593475341797e-05"/>
+				<datum xmlns="http://ggf.org/ns/nwmg/tools/hades/aggregated" med_delay="0.00538802146911621" med_ipdv_jitter="9.5367431640625e-07" min_ipdv_jitter="-1.21593475341797e-05" time="1367359323.02206" sync="yes" min_delay="0.00538206100463867" max_delay="0.00539422035217285" duplicates="0" loss="0" max_ipdv_jitter="5.96046447753906e-06"/>
+			</nmwg:data>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+
+\section{Structure for BWCTL MA service}
+\begin{flushleft}
+The BWCTL MA service manages throughput historical data which is measured between two interfaces. The following subsections contain valid soap examples for the corresponding requests or responses.  
+\end{flushleft}
+\subsection{Request interface list}
+\begin{flushleft}
+The following example queries a list of end point pairs (or interface pairs) for a specific time interval.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:bwctl="http://ggf.org/ns/nmwg/tools/bwctl/2.0/" xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/" type="MetadataKeyRequest">
+			<nmwg:metadata id="metadata-bwctl1">
+				<bwctl:subject>
+					<nmwgt:endPoint/>
+				</bwctl:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/bwctl/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1">
+				<iperf:subject id="subject1">
+					<nmwgt:endPointPair/>
+				</iperf:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/iperf/2.0</nmwg:eventType>
+				<nmwg:parameters id="param1"/>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">
+					<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367380948</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Response interface list}
+\begin{flushleft}
+This example is shortened to two response interface pairs and would normally contain more data and metadata elements.
+In addition to the 'normal' metadata describing an interface pair we also need to store the metadataId of each pair. The data elements are at the end of the message and aren't in the same order as the metadata elements. Data needs to be linked by id.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Body>
+		<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" id="localhost.localdomain.71e9408:13f47e5ace4:-5d4f_resp" messageIdRef="localhost.localdomain.71e9408:13f47e5ace4:-5d4f" type="MetadataKeyResponse">
+			<nmwg:metadata id="meta-4086355404373509054">
+				<ns6:subject xmlns:ns6="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="iperf-subject" metadataIdRef="bwctl-metadata">
+					<ns3:endPointPair xmlns:ns3="http://ggf.org/ns/nmwg/topology/2.0/">
+						<ns3:src type="ipv4" value="mp1.fra.de.geant2.net"/>
+						<ns3:dst type="ipv4" value="perfsonar-sg.noc.tein3.net"/>
+					</ns3:endPointPair>
+				</ns6:subject>
+				<ns6:parameters xmlns:ns6="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="perfsonar-ma.geant.net.-7bd4a37b:13cb4887364:-7bdb">
+					<nmwg:parameter name="protocol" value="TCP"/>
+					<nmwg:parameter name="interval" value="6"/>
+				</ns6:parameters>
+				<ns2:eventType xmlns:ns2="http://ggf.org/ns/nmwg/base/2.0/">http://ggf.org/ns/nmwg/tools/iperf/2.0</ns2:eventType>
+			</nmwg:metadata>
+			<nmwg:metadata id="meta5313657599973800443">
+			        <iperf:subject xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="iperf-subject" metadataIdRef="bwctl-metadata">
+			          <nmwgt:endPointPair xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/">
+			            <nmwgt:src type="ipv4" value="62.40.122.10"/>
+			            <nmwgt:dst type="ipv4" value="62.40.121.250"/>
+			          </nmwgt:endPointPair>
+			        </iperf:subject>
+			        <iperf:parameters xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="perfsonar-ma.geant.net.47b26600:132b5fdb6e0:70f">
+			          <nmwg:parameter name="protocol" value="tcp"/>
+			          <nmwg:parameter name="interval" value="6"/>
+			        </iperf:parameters>
+			        <nmwg:eventType>http://ggf.org/ns/nmwg/tools/iperf/2.0</nmwg:eventType>
+		 	</nmwg:metadata>
+		 	
+		 	...
+		 	
+			<nmwg:data id="perfsonar-ma.geant.net.47b26600:132b5fdb6e0:70c" metadataIdRef="meta5313657599973800443">
+				<nmwg:key id="perfsonar-ma.geant.net.47b26600:132b5fdb6e0:70d">
+					<nmwg:parameters id="perfsonar-ma.geant.net.47b26600:132b5fdb6e0:70e">
+						<nmwg:parameter name="ibatisConfig" value="ibatis-SqlMapConfig-iperf.xml"/>
+						<nmwg:parameter name="eventType" value="http://ggf.org/ns/nmwg/tools/iperf/2.0"/>
+						<nmwg:parameter name="metadataId" value="meta5313657599973800443"/>
+					</nmwg:parameters>
+					<select:parameters xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/" id="param1-2">
+						<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+						<nmwg:parameter name="endTime">1367380948</nmwg:parameter>
+					</select:parameters>
+				</nmwg:key>
+			</nmwg:data>
+			<nmwg:data id="perfsonar-ma.geant.net.-7bd4a37b:13cb4887364:-7bde" metadataIdRef="meta-4086355404373509054">
+				<nmwg:key id="perfsonar-ma.geant.net.-7bd4a37b:13cb4887364:-7bdd">
+					<nmwg:parameters id="perfsonar-ma.geant.net.-7bd4a37b:13cb4887364:-7bdc">
+						<nmwg:parameter name="ibatisConfig" value="ibatis-SqlMapConfig-iperf.xml"/>
+						<nmwg:parameter name="eventType" value="http://ggf.org/ns/nmwg/tools/iperf/2.0"/>
+						<nmwg:parameter name="metadataId" value="meta-4086355404373509054"/>
+					</nmwg:parameters>
+					<select:parameters xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/" id="param1-2">
+						<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+						<nmwg:parameter name="endTime">1367380948</nmwg:parameter>
+					</select:parameters>
+				</nmwg:key>
+			</nmwg:data>
+			
+			..
+			
+		</nmwg:message>
+	</soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Request data for interface}
+\begin{flushleft}
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:bwctl="http://ggf.org/ns/nmwg/tools/bwctl/2.0/" xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/" type="SetupDataRequest">
+			<nmwg:metadata id="metadata1">
+				<iperf:subject id="subject1">
+					<nmwgt:endPointPair>
+						<nmwgt:src type="ipv4" value="mp1.fra.de.geant2.net"/>
+						<nmwgt:dst type="ipv4" value="perfsonar-sg.noc.tein3.net"/>
+					</nmwgt:endPointPair>
+				</iperf:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/iperf/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">
+					<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367380948</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>
+			
+			<nmwg:metadata id="metadata2">
+				<iperf:subject id="subject2">
+					<nmwgt:endPointPair>
+						<nmwgt:src type="ipv4" value="62.40.122.10"/>
+						<nmwgt:dst type="ipv4" value="62.40.121.250"/>
+					</nmwgt:endPointPair>
+				</iperf:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/iperf/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata2-2">
+				<select:subject id="subject2-2" metadataIdRef="metadata2"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param2-2">
+					<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367380948</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data2" metadataIdRef="metadata2-2"/>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Response data for interface}
+\begin{flushleft}
+Now we need to link each measurement data to the previous saved metadataId. Data elements can be empty and are located at the end of the message.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Body>
+		<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" id="localhost.localdomain.71e9408:13f47e5ace4:-4adb_resp" messageIdRef="localhost.localdomain.71e9408:13f47e5ace4:-4adb" type="SetupDataResponse">
+			<nmwg:metadata id="meta5313657599973800443_38">
+				<iperf:subject xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="iperf-subject" metadataIdRef="bwctl-metadata">
+					<nmwgt:endPointPair xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/">
+						<nmwgt:src type="ipv4" value="62.40.122.10"/>
+						<nmwgt:dst type="ipv4" value="62.40.121.250"/>
+					</nmwgt:endPointPair>
+				</iperf:subject>
+				<iperf:parameters xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="perfsonar-ma.geant.net.47b26600:132b5fdb6e0:70f">
+					<nmwg:parameter name="protocol" value="tcp"/>
+					<nmwg:parameter name="interval" value="6"/>
+				</iperf:parameters>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/tools/iperf/2.0</nmwg:eventType>
+			</nmwg:metadata>		
+			<nmwg:metadata id="meta-4086355404373509054_0">
+				<ns6:subject xmlns:ns6="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="iperf-subject" metadataIdRef="bwctl-metadata">
+					<ns3:endPointPair xmlns:ns3="http://ggf.org/ns/nmwg/topology/2.0/">
+						<ns3:src type="ipv4" value="mp1.fra.de.geant2.net"/>
+						<ns3:dst type="ipv4" value="perfsonar-sg.noc.tein3.net"/>
+					</ns3:endPointPair>
+				</ns6:subject>
+				<ns6:parameters xmlns:ns6="http://ggf.org/ns/nmwg/tools/iperf/2.0/" id="perfsonar-ma.geant.net.-7bd4a37b:13cb4887364:-7bdb">
+					<nmwg:parameter name="protocol" value="TCP"/>
+					<nmwg:parameter name="interval" value="6"/>
+				</ns6:parameters>
+				<ns2:eventType xmlns:ns2="http://ggf.org/ns/nmwg/base/2.0/">http://ggf.org/ns/nmwg/tools/iperf/2.0</ns2:eventType>
+			</nmwg:metadata>
+			<nmwg:data id="localhost.localdomain.71e9408:13f47e5ace4:-3f76_0" metadataIdRef="meta-4086355404373509054_0"/>
+			<nmwg:data id="localhost.localdomain.71e9408:13f47e5ace4:-3b9a_38" metadataIdRef="meta5313657599973800443_38">
+				<iperf:datum xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" interval="0.0- 6.0" numBytesUnits="Bytes" timeType="unix" timeValue="1367359357" value="9639819.0" valueUnits="bits/sec"/>
+				<iperf:datum xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" interval="6.0-12.0" numBytesUnits="Bytes" timeType="unix" timeValue="1367359357" value="6006304.0" valueUnits="bits/sec"/>
+				<iperf:datum xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" interval="12.0-18.0" numBytesUnits="Bytes" timeType="unix" timeValue="1367359357" value="4.0329696E7" valueUnits="bits/sec"/>
+				<iperf:datum xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" interval="18.0-24.0" numBytesUnits="Bytes" timeType="unix" timeValue="1367359357" value="2.2550188E7" valueUnits="bits/sec"/>
+				<iperf:datum xmlns:iperf="http://ggf.org/ns/nmwg/tools/iperf/2.0/" interval="24.0-30.0" numBytesUnits="Bytes" timeType="unix" timeValue="1367359357" value="7759349.0" valueUnits="bits/sec"/>
+			</nmwg:data>
+		</nmwg:message>
+	</soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+
+\section{Structure for RRD MA  service}
+\begin{flushleft}
+The RRD MA service manages utilization data of individual interfaces. The following subsections contain valid soap examples for the corresponding requests or responses. 
+\end{flushleft}
+\subsection{Request interface list}
+\begin{flushleft}
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" type="MetadataKeyRequest">
+			<nmwg:metadata id="metadata1">
+				<netutil:subject id="subject1">
+					<nmwgt:interface/>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1"/>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Response interface list}
+\begin{flushleft}
+This example is shortened to two response interfaces and would normally contain more data and metadata elements.
+After each metadata-element follows  the corresponding data-element. The ifAddress-element can be empty.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" type="MetadataKeyResponse">
+			<nmwg:metadata id="165211">
+				<netutil:subject xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" id="subj1">
+					<nmwgt:interface>
+						<nmwgt:hostName>geo.lon.uk.geant.net</nmwgt:hostName>
+						<nmwgt:ifAddress type="ipv4"/>
+						<nmwgt:ifName>xe-1/1/1</nmwgt:ifName>
+						<nmwgt:ifDescription>ORIENTplus link to Beijing</nmwgt:ifDescription>
+						<nmwgt:direction>in</nmwgt:direction>
+						<nmwgt:capacity>4294967295000000</nmwgt:capacity>
+						<nmwgt:authRealm/>
+					</nmwgt:interface>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+				<parameters id="params1">
+					<parameter name="keyword">project:GEANT</parameter>
+				</parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data165211" metadataIdRef="165211">
+				<nmwg:key>
+					<nmwg:parameters>
+						<nmwg:parameter name="file">/home/rrd-stats/geo_lon_uk_traffic_in_7870.rrd</nmwg:parameter>
+						<nmwg:parameter name="dataSource">traffic_in</nmwg:parameter>
+						<nmwg:parameter name="valueUnits">Bps</nmwg:parameter>
+						<nmwg:parameter name="eventType">http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:parameter>
+						<nmwg:parameter name="dataSourceStep">traffic_in</nmwg:parameter>
+						<nmwg:parameter name="dataSourceType">COUNTER</nmwg:parameter>
+						<nmwg:parameter name="dataSourceHeartbeat">http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:parameter>
+						<nmwg:parameter name="dataSourceMinValue">0</nmwg:parameter>
+						<nmwg:parameter name="dataSourceMaxValue">0</nmwg:parameter>
+					</nmwg:parameters>
+				</nmwg:key>
+			</nmwg:data>
+			<nmwg:metadata id="165231">
+				<netutil:subject xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" id="subj1">
+					<nmwgt:interface>
+						<nmwgt:hostName>mx1.ams.nl.geant.net</nmwgt:hostName>
+						<nmwgt:ifAddress type="ipv4">62.40.98.81</nmwgt:ifAddress>
+						<nmwgt:ifName>ae0.0</nmwgt:ifName>
+						<nmwgt:ifDescription>Link (L) to mx1.lon.uk</nmwgt:ifDescription>
+						<nmwgt:direction>in</nmwgt:direction>
+						<nmwgt:capacity>100000000000</nmwgt:capacity>
+						<nmwgt:authRealm/>
+					</nmwgt:interface>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+				<parameters id="params1">
+					<parameter name="keyword">project:GEANT</parameter>
+				</parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data165231" metadataIdRef="165231">
+				<nmwg:key>
+					<nmwg:parameters>
+						<nmwg:parameter name="file">/home/rrd-stats/mx1_ams_nl_traffic_in_7968.rrd</nmwg:parameter>
+						<nmwg:parameter name="dataSource">traffic_in</nmwg:parameter>
+						<nmwg:parameter name="valueUnits">Bps</nmwg:parameter>
+						<nmwg:parameter name="eventType">http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:parameter>
+						<nmwg:parameter name="dataSourceStep">traffic_in</nmwg:parameter>
+						<nmwg:parameter name="dataSourceType">COUNTER</nmwg:parameter>
+						<nmwg:parameter name="dataSourceHeartbeat">http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:parameter>
+						<nmwg:parameter name="dataSourceMinValue">0</nmwg:parameter>
+						<nmwg:parameter name="dataSourceMaxValue">100000000000</nmwg:parameter>
+					</nmwg:parameters>
+				</nmwg:key>
+			</nmwg:data>
+			
+			...
+			
+		</nmwg:message>
+	</soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Request data for interface}
+\begin{flushleft}
+Interfaces can be queried by ifName, hostname and direction and when available also by address. All parameter are optional, e.g. when you only query with the hostname the service will return all interfaces and corresponding data registered with this hostname. The more parameter are used, the more specific is the request.
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+	<SOAP-ENV:Header/>
+	<SOAP-ENV:Body>
+		<nmwg:message xmlns="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:nmtm="http://ggf.org/ns/nmwg/time/2.0/" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:perfsonar="http://ggf.org/ns/nmwg/tools/org/perfsonar/1.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" type="SetupDataRequest">
+			<nmwg:metadata id="metadata1">
+				<netutil:subject id="subject1">
+					<nmwgt:interface>
+						<nmwgt:ifName>xe-1/1/1</nmwgt:ifName>
+						<nmwgt:hostName>geo.lon.uk.geant.net</nmwgt:hostName>
+						<nmwgt:direction>in</nmwgt:direction>
+					</nmwgt:interface>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata1-2">
+				<select:subject id="subject1-2" metadataIdRef="metadata1"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param1-2">
+					<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367553688</nmwg:parameter>
+					<nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+					<nmwg:parameter name="resolution">300</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data1" metadataIdRef="metadata1-2"/>
+			<nmwg:metadata id="metadata2">
+				<netutil:subject id="subject2">
+					<nmwgt:interface>
+						<nmwgt:hostName>mx1.ams.nl.geant.net</nmwgt:hostName>
+						<nmwgt:ifAddress type="ipv4">62.40.98.81</nmwgt:ifAddress>
+						<nmwgt:ifName>ae0.0</nmwgt:ifName>
+						<nmwgt:direction>in</nmwgt:direction>
+					</nmwgt:interface>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:metadata id="metadata2-2">
+				<select:subject id="subject2-2" metadataIdRef="metadata2"/>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+				<select:parameters id="param2-2">
+					<nmwg:parameter name="startTime">1367359228</nmwg:parameter>
+					<nmwg:parameter name="endTime">1367553688</nmwg:parameter>
+					<nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+					<nmwg:parameter name="resolution">300</nmwg:parameter>
+				</select:parameters>
+			</nmwg:metadata>
+			<nmwg:data id="data2" metadataIdRef="metadata2-2"/>
+		</nmwg:message>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\subsection{Response data for interface}
+\begin{flushleft}
+In this example some datum elements are missing to shorten the code. Also there could be missing interfaces and their corresponding data elements.
+After each metadata-element follows  the corresponding data-element. Depending on the queried time period, the same interface has multiple metadata and data elements, which follow each other (metadata,data,metadata,data,...)and can be identified by the beginning of the id. Metadata and data id should start the same, but sometimes the data id differs (maybe a bug).\newline
+Also there are interfaces which don't exist in the response any more and are replaced by metadata and data elements whose ids starts with "result-code". Those elements don't contain any information, just an error code. 
+\begin{framed}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+	<soapenv:Body>
+		<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" id="uri:ps-element-id:1371301298125:712980" messageIdRef="uri:ps-element-id:1371301290770:591827" type="SetupDataResponse">
+			<nmwg:metadata id="uri:ps-element-id:1371301294913:614728_0">
+				<netutil:subject xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" id="uri:ps-element-id:1371301294913:614728">
+					<nmwgt:interface xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/">
+						<nmwgt:ifAddress type="ipv4"/>
+						<nmwgt:hostName>geo.lon.uk.geant.net</nmwgt:hostName>
+						<nmwgt:ifName>xe-1/1/1</nmwgt:ifName>
+						<nmwgt:ifDescription>ORIENTplus link to Beijing</nmwgt:ifDescription>
+						<nmwgt:direction>in</nmwgt:direction>
+						<nmwgt:capacity>4294967295000000</nmwgt:capacity>
+					</nmwgt:interface>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:data id="uri:ps-element-id:1371301295004:614757_0" metadataIdRef="uri:ps-element-id:1371301294913:614728_0">
+				...
+				<netutil:datum xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" timeValue="1367503200" value="1822720.1283694447" valueUnits="Bps" timeType="unix"/>
+				<netutil:datum xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" timeValue="1367510400" value="0.0" valueUnits="Bps" timeType="unix"/>
+				...
+				<nmwg:parameters>
+					<nmwg:parameter name="dataSourceStep">300</nmwg:parameter>
+					<nmwg:parameter name="dataSourceType">COUNTER</nmwg:parameter>
+					<nmwg:parameter name="dataSourceHeartbeat">600</nmwg:parameter>
+					<nmwg:parameter name="dataSourceMinValue">0</nmwg:parameter>
+					<nmwg:parameter name="dataSourceMaxValue">0</nmwg:parameter>
+				</nmwg:parameters>
+			</nmwg:data>
+			<nmwg:metadata id="uri:ps-element-id:1371301295057:615974_20">
+				<netutil:subject xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" id="uri:ps-element-id:1371301295057:615974">
+					<nmwgt:interface xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/">
+						<nmwgt:ifAddress type="ipv4">62.40.98.81</nmwgt:ifAddress>
+						<nmwgt:hostName>mx1.ams.nl.geant.net</nmwgt:hostName>
+						<nmwgt:ifName>ae0.0</nmwgt:ifName>
+						<nmwgt:ifDescription>Link (L) to mx1.lon.uk</nmwgt:ifDescription>
+						<nmwgt:direction>in</nmwgt:direction>
+						<nmwgt:capacity>100000000000</nmwgt:capacity>
+					</nmwgt:interface>
+				</netutil:subject>
+				<nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+			</nmwg:metadata>
+			<nmwg:data id="uri:ps-element-id:1371301295057:616003_20" metadataIdRef="uri:ps-element-id:1371301295057:615974_20">
+				<netutil:datum xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" timeValue="1367366400" value="5.030698887230297E8" valueUnits="Bps" timeType="unix"/>
+				<netutil:datum xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" timeValue="1367373600" value="4.9351114490466815E8" valueUnits="Bps" timeType="unix"/>				
+				...				
+				<nmwg:parameters>
+					<nmwg:parameter name="dataSourceStep">300</nmwg:parameter>
+					<nmwg:parameter name="dataSourceType">COUNTER</nmwg:parameter>
+					<nmwg:parameter name="dataSourceHeartbeat">600</nmwg:parameter>
+					<nmwg:parameter name="dataSourceMinValue">0</nmwg:parameter>
+					<nmwg:parameter name="dataSourceMaxValue">100000000000</nmwg:parameter>
+				</nmwg:parameters>
+			</nmwg:data>
+		</nmwg:message>
+	</soapenv:Body>
+</soapenv:Envelope>
+\end{lstlisting}
+\end{framed}
+\end{flushleft}
+\end{document}

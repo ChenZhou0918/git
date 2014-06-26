@@ -1,0 +1,1 @@
+{"FeatureName":"DelayJitterLossGetData","Service":"X-WiN","SourceInterface":"Berlin_ADH_DFN","DestinationInterface":"Augsburg_DFN","StartTime":"2014-06-24 23-44-00-000","EndTime":"2014-06-25 11-44-00-000","GetNonCachedData":true}

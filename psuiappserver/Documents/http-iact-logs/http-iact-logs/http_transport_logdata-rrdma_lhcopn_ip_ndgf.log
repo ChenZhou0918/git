@@ -1,0 +1,305 @@
+http request/response log (time=1365422770)
+
+http request/response log (time=1365422769)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://mdm-prim.ndgf.org:8080/geant2-java-rrd-ma/services/MeasurementArchiveService
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 3087
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <errors:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422400</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <errors:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422400</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 200
+response 1 msg: 'OK'
+response 1 header: 'client-date : Mon, 08 Apr 2013 12:06:09 GMT
+connection : close
+content-type : text/xml;charset=utf-8
+client-response-num : 1
+date : Mon, 08 Apr 2013 12:04:12 GMT
+client-peer : 109.105.124.66:8080
+server : Apache-Coyote/1.1
+'
+response 1 content: '<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><nmwg:message id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c2e_resp" messageIdRef="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c2e" type="SetupDataResponse" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/"><nmwg:metadata id="resultCodeMetadata_1"><nmwg:eventType>warning.ma.metadata_configuration</nmwg:eventType></nmwg:metadata><nmwg:metadata id="meta4_0"><errors:subject id="subj4" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/"><nmwgt:interface xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/"><nmwgt:hostName>lo0.dk-ndgf.nordu.net</nmwgt:hostName><nmwgt:ifName>xe-1/1/0</nmwgt:ifName><nmwgt:ifDescription>LHCOPN 10G T0-T1 CERN-NDGF NU-S000130, ndgf-cern</nmwgt:ifDescription><nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress><nmwgt:ifIndex>510</nmwgt:ifIndex><nmwgt:direction>in</nmwgt:direction><nmwgt:capacity>10000000000</nmwgt:capacity></nmwgt:interface></errors:subject><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c4d"><nmwg:parameter name="keyword">project:LHC-OPN</nmwg:parameter></nmwg:parameters><nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType></nmwg:metadata><nmwg:data id="resultDescriptionData_for_resultCodeMetadata_1" metadataIdRef="resultCodeMetadata_1"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">MetadataConfigurationStorageManager.fetch: No metadata in the metadata configuration</nmwgr:datum></nmwg:data><nmwg:data id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c5d_0" metadataIdRef="meta4_0"><errors:datum timeType="unix" timeValue="1365422400" value="0.0" valueUnits="Eps" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/"/><errors:datum timeType="unix" timeValue="1365422700" value="NaN" valueUnits="Eps" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/"/><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c5c"><nmwg:parameter name="dataSourceMinValue" value="0"/><nmwg:parameter name="dataSourceHeartbeat" value="600"/><nmwg:parameter name="dataSourceStep" value="300"/><nmwg:parameter name="dataSourceMaxValue" value="10000000"/><nmwg:parameter name="dataSourceType" value="COUNTER"/></nmwg:parameters></nmwg:data></nmwg:message></soapenv:Body></soapenv:Envelope>'
+----------------------------------------------------------
+http request/response log (time=1365422770)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://mdm-prim.ndgf.org:8080/geant2-java-rrd-ma/services/MeasurementArchiveService
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 3099
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <discards:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422400</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <discards:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422400</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 200
+response 1 msg: 'OK'
+response 1 header: 'client-date : Mon, 08 Apr 2013 12:06:10 GMT
+connection : close
+content-type : text/xml;charset=utf-8
+client-response-num : 1
+date : Mon, 08 Apr 2013 12:04:12 GMT
+client-peer : 109.105.124.66:8080
+server : Apache-Coyote/1.1
+'
+response 1 content: '<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><nmwg:message id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c5e_resp" messageIdRef="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c5e" type="SetupDataResponse" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/"><nmwg:metadata id="meta6_1"><discards:subject id="subj6" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/"><nmwgt:interface xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/"><nmwgt:hostName>lo0.dk-ndgf.nordu.net</nmwgt:hostName><nmwgt:ifName>xe-1/1/0</nmwgt:ifName><nmwgt:ifDescription>LHCOPN 10G T0-T1 CERN-NDGF NU-S000130, ndgf-cern</nmwgt:ifDescription><nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress><nmwgt:ifIndex>510</nmwgt:ifIndex><nmwgt:direction>out</nmwgt:direction><nmwgt:capacity>10000000000</nmwgt:capacity></nmwgt:interface></discards:subject><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c7d"><nmwg:parameter name="keyword">project:LHC-OPN</nmwg:parameter></nmwg:parameters><nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType></nmwg:metadata><nmwg:metadata id="resultCodeMetadata_0"><nmwg:eventType>warning.ma.metadata_configuration</nmwg:eventType></nmwg:metadata><nmwg:data id="resultDescriptionData_for_resultCodeMetadata_0" metadataIdRef="resultCodeMetadata_0"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">MetadataConfigurationStorageManager.fetch: No metadata in the metadata configuration</nmwgr:datum></nmwg:data><nmwg:data id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c8d_1" metadataIdRef="meta6_1"><discards:datum timeType="unix" timeValue="1365422400" value="0.0" valueUnits="Dps" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/"/><discards:datum timeType="unix" timeValue="1365422700" value="NaN" valueUnits="Dps" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/"/><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c8c"><nmwg:parameter name="dataSourceMinValue" value="0"/><nmwg:parameter name="dataSourceHeartbeat" value="600"/><nmwg:parameter name="dataSourceStep" value="300"/><nmwg:parameter name="dataSourceMaxValue" value="10000000"/><nmwg:parameter name="dataSourceType" value="COUNTER"/></nmwg:parameters></nmwg:data></nmwg:message></soapenv:Body></soapenv:Envelope>'
+----------------------------------------------------------
+http request/response log (time=1365422770)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://mdm-prim.ndgf.org:8080/geant2-java-rrd-ma/services/MeasurementArchiveService
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 3176
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:utilization="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <netutil:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422400</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <netutil:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:ifName>xe-1/1/0</nmwgt:ifName>
+
+            <nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365422100</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365422400</nmwg:parameter>
+
+          <nmwg:parameter value="AVERAGE" name="consolidationFunction" />
+          
+          <nmwg:parameter value="300" name="resolution" />
+                  </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 200
+response 1 msg: 'OK'
+response 1 header: 'client-date : Mon, 08 Apr 2013 12:06:10 GMT
+connection : close
+content-type : text/xml;charset=utf-8
+client-response-num : 1
+date : Mon, 08 Apr 2013 12:04:12 GMT
+client-peer : 109.105.124.66:8080
+server : Apache-Coyote/1.1
+'
+response 1 content: '<?xml version="1.0" encoding="utf-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><nmwg:message id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c8e_resp" messageIdRef="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6c8e" type="SetupDataResponse" xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/"><nmwg:metadata id="meta1_1"><netutil:subject id="subj1" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/"><nmwgt:interface xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/"><nmwgt:hostName>lo0.dk-ndgf.nordu.net</nmwgt:hostName><nmwgt:ifName>xe-1/1/0</nmwgt:ifName><nmwgt:ifDescription>LHCOPN 10G T0-T1 CERN-NDGF NU-S000130, ndgf-cern</nmwgt:ifDescription><nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress><nmwgt:ifIndex>510</nmwgt:ifIndex><nmwgt:direction>out</nmwgt:direction><nmwgt:capacity>10000000000</nmwgt:capacity></nmwgt:interface></netutil:subject><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6cc8"><nmwg:parameter name="keyword">project:LHC-OPN</nmwg:parameter></nmwg:parameters><nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType></nmwg:metadata><nmwg:metadata id="meta0_0"><netutil:subject id="subj0" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/"><nmwgt:interface xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/"><nmwgt:hostName>lo0.dk-ndgf.nordu.net</nmwgt:hostName><nmwgt:ifName>xe-1/1/0</nmwgt:ifName><nmwgt:ifDescription>LHCOPN 10G T0-T1 CERN-NDGF NU-S000130, ndgf-cern</nmwgt:ifDescription><nmwgt:ifAddress type="ipv4">192.16.166.50</nmwgt:ifAddress><nmwgt:ifIndex>510</nmwgt:ifIndex><nmwgt:direction>in</nmwgt:direction><nmwgt:capacity>10000000000</nmwgt:capacity></nmwgt:interface></netutil:subject><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6cad"><nmwg:parameter name="keyword">project:LHC-OPN</nmwg:parameter></nmwg:parameters><nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType></nmwg:metadata><nmwg:data id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6cd8_1" metadataIdRef="meta1_1"><netutil:datum timeType="unix" timeValue="1365422400" value="3.0731786175116684E7" valueUnits="Bps" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/"/><netutil:datum timeType="unix" timeValue="1365422700" value="NaN" valueUnits="Bps" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/"/><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6cd7"><nmwg:parameter name="dataSourceMinValue" value="0"/><nmwg:parameter name="dataSourceHeartbeat" value="600"/><nmwg:parameter name="dataSourceStep" value="300"/><nmwg:parameter name="dataSourceMaxValue" value="10000000000"/><nmwg:parameter name="dataSourceType" value="COUNTER"/></nmwg:parameters></nmwg:data><nmwg:data id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6cbd_0" metadataIdRef="meta0_0"><netutil:datum timeType="unix" timeValue="1365422400" value="1.8788089878444426E7" valueUnits="Bps" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/"/><netutil:datum timeType="unix" timeValue="1365422700" value="NaN" valueUnits="Bps" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/"/><nmwg:parameters id="mdm-prim.ndgf.org.68420a11:13de42f5d9d:6cbc"><nmwg:parameter name="dataSourceMinValue" value="0"/><nmwg:parameter name="dataSourceHeartbeat" value="600"/><nmwg:parameter name="dataSourceStep" value="300"/><nmwg:parameter name="dataSourceMaxValue" value="10000000000"/><nmwg:parameter name="dataSourceType" value="COUNTER"/></nmwg:parameters></nmwg:data></nmwg:message></soapenv:Body></soapenv:Envelope>'
+----------------------------------------------------------

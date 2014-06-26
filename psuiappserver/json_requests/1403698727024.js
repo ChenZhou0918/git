@@ -1,0 +1,1 @@
+{"FeatureName":"UtilizationGetData","Service":"APAN-JP","SourceInterface":"ge-0/0/0.130","DestinationInterface":null,"StartTime":"2014-06-25 0-21-00-000","EndTime":"2014-06-25 12-21-00-000","GetNonCachedData":true}

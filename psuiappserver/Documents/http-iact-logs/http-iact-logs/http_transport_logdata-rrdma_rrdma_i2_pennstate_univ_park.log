@@ -1,0 +1,2588 @@
+http request/response log (time=1365421221)
+
+http request/response log (time=1365421219)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://t248.npitest.psu.edu:9990/perfSONAR_PS/services/SNMPMA
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 28768
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <errors:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve201</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">216.27.98.166</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <errors:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve201</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">216.27.98.166</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+      
+      <nmwg:metadata id="metadata3">
+        <errors:subject id="subject3">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve101</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">38.104.114.26</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata3-2">
+        <select:subject metadataIdRef="metadata3" id="subject3-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param3-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata3-2" id="data3" />
+      
+      <nmwg:metadata id="metadata4">
+        <errors:subject id="subject4">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve101</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">38.104.114.26</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata4-2">
+        <select:subject metadataIdRef="metadata4" id="subject4-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param4-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata4-2" id="data4" />
+      
+      <nmwg:metadata id="metadata5">
+        <errors:subject id="subject5">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/1</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.62</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata5-2">
+        <select:subject metadataIdRef="metadata5" id="subject5-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param5-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata5-2" id="data5" />
+      
+      <nmwg:metadata id="metadata6">
+        <errors:subject id="subject6">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/1</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.62</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata6-2">
+        <select:subject metadataIdRef="metadata6" id="subject6-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param6-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata6-2" id="data6" />
+      
+      <nmwg:metadata id="metadata7">
+        <errors:subject id="subject7">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve132</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">147.73.16.152</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata7-2">
+        <select:subject metadataIdRef="metadata7" id="subject7-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param7-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata7-2" id="data7" />
+      
+      <nmwg:metadata id="metadata8">
+        <errors:subject id="subject8">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve132</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">147.73.16.152</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata8-2">
+        <select:subject metadataIdRef="metadata8" id="subject8-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param8-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata8-2" id="data8" />
+      
+      <nmwg:metadata id="metadata9">
+        <errors:subject id="subject9">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.10</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata9-2">
+        <select:subject metadataIdRef="metadata9" id="subject9-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param9-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata9-2" id="data9" />
+      
+      <nmwg:metadata id="metadata10">
+        <errors:subject id="subject10">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.10</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata10-2">
+        <select:subject metadataIdRef="metadata10" id="subject10-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param10-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata10-2" id="data10" />
+      
+      <nmwg:metadata id="metadata11">
+        <errors:subject id="subject11">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">12.177.241.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata11-2">
+        <select:subject metadataIdRef="metadata11" id="subject11-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param11-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata11-2" id="data11" />
+      
+      <nmwg:metadata id="metadata12">
+        <errors:subject id="subject12">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">12.177.241.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata12-2">
+        <select:subject metadataIdRef="metadata12" id="subject12-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param12-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata12-2" id="data12" />
+      
+      <nmwg:metadata id="metadata13">
+        <errors:subject id="subject13">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.31.49.1</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata13-2">
+        <select:subject metadataIdRef="metadata13" id="subject13-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param13-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata13-2" id="data13" />
+      
+      <nmwg:metadata id="metadata14">
+        <errors:subject id="subject14">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.31.49.1</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata14-2">
+        <select:subject metadataIdRef="metadata14" id="subject14-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param14-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata14-2" id="data14" />
+      
+      <nmwg:metadata id="metadata15">
+        <errors:subject id="subject15">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.57</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata15-2">
+        <select:subject metadataIdRef="metadata15" id="subject15-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param15-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata15-2" id="data15" />
+      
+      <nmwg:metadata id="metadata16">
+        <errors:subject id="subject16">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.57</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata16-2">
+        <select:subject metadataIdRef="metadata16" id="subject16-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param16-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata16-2" id="data16" />
+      
+      <nmwg:metadata id="metadata17">
+        <errors:subject id="subject17">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.53</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata17-2">
+        <select:subject metadataIdRef="metadata17" id="subject17-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param17-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata17-2" id="data17" />
+      
+      <nmwg:metadata id="metadata18">
+        <errors:subject id="subject18">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.53</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata18-2">
+        <select:subject metadataIdRef="metadata18" id="subject18-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param18-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata18-2" id="data18" />
+      
+      <nmwg:metadata id="metadata19">
+        <errors:subject id="subject19">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata19-2">
+        <select:subject metadataIdRef="metadata19" id="subject19-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param19-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata19-2" id="data19" />
+      
+      <nmwg:metadata id="metadata20">
+        <errors:subject id="subject20">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata20-2">
+        <select:subject metadataIdRef="metadata20" id="subject20-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param20-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata20-2" id="data20" />
+      
+      <nmwg:metadata id="metadata21">
+        <errors:subject id="subject21">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.2</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata21-2">
+        <select:subject metadataIdRef="metadata21" id="subject21-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param21-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata21-2" id="data21" />
+      
+      <nmwg:metadata id="metadata22">
+        <errors:subject id="subject22">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.2</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata22-2">
+        <select:subject metadataIdRef="metadata22" id="subject22-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param22-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata22-2" id="data22" />
+      
+      <nmwg:metadata id="metadata23">
+        <errors:subject id="subject23">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.113.9</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata23-2">
+        <select:subject metadataIdRef="metadata23" id="subject23-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param23-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata23-2" id="data23" />
+      
+      <nmwg:metadata id="metadata24">
+        <errors:subject id="subject24">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.113.9</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </errors:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/errors/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata24-2">
+        <select:subject metadataIdRef="metadata24" id="subject24-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param24-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata24-2" id="data24" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 200
+response 1 msg: 'success'
+response 1 header: 'user-agent : perfSONAR-PS/3.2
+client-response-num : 1
+date : Mon, 08 Apr 2013 11:40:19 GMT
+client-peer : 128.118.46.248:9990
+content-length : 9341
+client-date : Mon, 08 Apr 2013 11:40:19 GMT
+content-type : text/xml
+server : libwww-perl-daemon/5.827
+'
+response 1 content: '<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" id="message.3536655" type="SetupDataResponse"><nmwg:metadata metadataIdRef="metadata1-2" id="metadata.15629189"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.15629189" id="data.4080116"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata2-2" id="metadata.11827263"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.11827263" id="data.9513612"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata3-2" id="metadata.3186682"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.3186682" id="data.8779027"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata4-2" id="metadata.2425312"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.2425312" id="data.6084759"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata5-2" id="metadata.7606214"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7606214" id="data.1243911"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata6-2" id="metadata.9434517"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.9434517" id="data.10339897"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata7-2" id="metadata.17599696"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.17599696" id="data.16756148"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata8-2" id="metadata.6800431"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.6800431" id="data.7079907"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata9-2" id="metadata.16477582"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.16477582" id="data.4647286"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata10-2" id="metadata.2744567"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.2744567" id="data.9265913"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata11-2" id="metadata.9446117"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.9446117" id="data.10299277"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata12-2" id="metadata.9572137"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.9572137" id="data.13455552"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata13-2" id="metadata.3619394"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.3619394" id="data.5663837"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata14-2" id="metadata.5286748"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5286748" id="data.9786172"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata15-2" id="metadata.3277547"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.3277547" id="data.5848594"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata16-2" id="metadata.10754426"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.10754426" id="data.6963668"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata17-2" id="metadata.12446150"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.12446150" id="data.10547123"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata18-2" id="metadata.8185392"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8185392" id="data.3620043"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata19-2" id="metadata.7999279"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7999279" id="data.1431502"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata20-2" id="metadata.8631546"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8631546" id="data.4346859"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata21-2" id="metadata.4181631"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.4181631" id="data.16238900"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata22-2" id="metadata.5112361"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5112361" id="data.7003632"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata23-2" id="metadata.13641580"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.13641580" id="data.14784373"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata24-2" id="metadata.13456015"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.13456015" id="data.14369673"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data></nmwg:message>  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+'
+----------------------------------------------------------
+http request/response log (time=1365421220)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://t248.npitest.psu.edu:9990/perfSONAR_PS/services/SNMPMA
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 28912
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <discards:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve201</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">216.27.98.166</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <discards:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve201</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">216.27.98.166</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+      
+      <nmwg:metadata id="metadata3">
+        <discards:subject id="subject3">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve101</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">38.104.114.26</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata3-2">
+        <select:subject metadataIdRef="metadata3" id="subject3-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param3-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata3-2" id="data3" />
+      
+      <nmwg:metadata id="metadata4">
+        <discards:subject id="subject4">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve101</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">38.104.114.26</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata4-2">
+        <select:subject metadataIdRef="metadata4" id="subject4-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param4-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata4-2" id="data4" />
+      
+      <nmwg:metadata id="metadata5">
+        <discards:subject id="subject5">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/1</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.62</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata5-2">
+        <select:subject metadataIdRef="metadata5" id="subject5-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param5-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata5-2" id="data5" />
+      
+      <nmwg:metadata id="metadata6">
+        <discards:subject id="subject6">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/1</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.62</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata6-2">
+        <select:subject metadataIdRef="metadata6" id="subject6-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param6-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata6-2" id="data6" />
+      
+      <nmwg:metadata id="metadata7">
+        <discards:subject id="subject7">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve132</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">147.73.16.152</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata7-2">
+        <select:subject metadataIdRef="metadata7" id="subject7-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param7-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata7-2" id="data7" />
+      
+      <nmwg:metadata id="metadata8">
+        <discards:subject id="subject8">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve132</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">147.73.16.152</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata8-2">
+        <select:subject metadataIdRef="metadata8" id="subject8-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param8-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata8-2" id="data8" />
+      
+      <nmwg:metadata id="metadata9">
+        <discards:subject id="subject9">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.10</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata9-2">
+        <select:subject metadataIdRef="metadata9" id="subject9-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param9-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata9-2" id="data9" />
+      
+      <nmwg:metadata id="metadata10">
+        <discards:subject id="subject10">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.10</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata10-2">
+        <select:subject metadataIdRef="metadata10" id="subject10-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param10-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata10-2" id="data10" />
+      
+      <nmwg:metadata id="metadata11">
+        <discards:subject id="subject11">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">12.177.241.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata11-2">
+        <select:subject metadataIdRef="metadata11" id="subject11-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param11-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata11-2" id="data11" />
+      
+      <nmwg:metadata id="metadata12">
+        <discards:subject id="subject12">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">12.177.241.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata12-2">
+        <select:subject metadataIdRef="metadata12" id="subject12-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param12-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata12-2" id="data12" />
+      
+      <nmwg:metadata id="metadata13">
+        <discards:subject id="subject13">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.31.49.1</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata13-2">
+        <select:subject metadataIdRef="metadata13" id="subject13-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param13-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata13-2" id="data13" />
+      
+      <nmwg:metadata id="metadata14">
+        <discards:subject id="subject14">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.31.49.1</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata14-2">
+        <select:subject metadataIdRef="metadata14" id="subject14-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param14-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata14-2" id="data14" />
+      
+      <nmwg:metadata id="metadata15">
+        <discards:subject id="subject15">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.57</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata15-2">
+        <select:subject metadataIdRef="metadata15" id="subject15-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param15-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata15-2" id="data15" />
+      
+      <nmwg:metadata id="metadata16">
+        <discards:subject id="subject16">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.57</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata16-2">
+        <select:subject metadataIdRef="metadata16" id="subject16-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param16-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata16-2" id="data16" />
+      
+      <nmwg:metadata id="metadata17">
+        <discards:subject id="subject17">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.53</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata17-2">
+        <select:subject metadataIdRef="metadata17" id="subject17-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param17-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata17-2" id="data17" />
+      
+      <nmwg:metadata id="metadata18">
+        <discards:subject id="subject18">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.53</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata18-2">
+        <select:subject metadataIdRef="metadata18" id="subject18-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param18-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata18-2" id="data18" />
+      
+      <nmwg:metadata id="metadata19">
+        <discards:subject id="subject19">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata19-2">
+        <select:subject metadataIdRef="metadata19" id="subject19-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param19-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata19-2" id="data19" />
+      
+      <nmwg:metadata id="metadata20">
+        <discards:subject id="subject20">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata20-2">
+        <select:subject metadataIdRef="metadata20" id="subject20-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param20-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata20-2" id="data20" />
+      
+      <nmwg:metadata id="metadata21">
+        <discards:subject id="subject21">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.2</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata21-2">
+        <select:subject metadataIdRef="metadata21" id="subject21-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param21-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata21-2" id="data21" />
+      
+      <nmwg:metadata id="metadata22">
+        <discards:subject id="subject22">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.2</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata22-2">
+        <select:subject metadataIdRef="metadata22" id="subject22-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param22-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata22-2" id="data22" />
+      
+      <nmwg:metadata id="metadata23">
+        <discards:subject id="subject23">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.113.9</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata23-2">
+        <select:subject metadataIdRef="metadata23" id="subject23-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param23-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata23-2" id="data23" />
+      
+      <nmwg:metadata id="metadata24">
+        <discards:subject id="subject24">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.113.9</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </discards:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/discards/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata24-2">
+        <select:subject metadataIdRef="metadata24" id="subject24-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param24-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata24-2" id="data24" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 200
+response 1 msg: 'success'
+response 1 header: 'user-agent : perfSONAR-PS/3.2
+client-response-num : 1
+date : Mon, 08 Apr 2013 11:40:20 GMT
+client-peer : 128.118.46.248:9990
+content-length : 9351
+client-date : Mon, 08 Apr 2013 11:40:20 GMT
+content-type : text/xml
+server : libwww-perl-daemon/5.827
+'
+response 1 content: '<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" id="message.12092526" type="SetupDataResponse"><nmwg:metadata metadataIdRef="metadata1-2" id="metadata.16923794"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.16923794" id="data.14218469"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata2-2" id="metadata.11414234"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.11414234" id="data.3340228"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata3-2" id="metadata.7469475"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7469475" id="data.16799546"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata4-2" id="metadata.1597252"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.1597252" id="data.10852801"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata5-2" id="metadata.9977922"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.9977922" id="data.2021946"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata6-2" id="metadata.4305592"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.4305592" id="data.8739053"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata7-2" id="metadata.13860311"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.13860311" id="data.15654222"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata8-2" id="metadata.11529610"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.11529610" id="data.12815160"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata9-2" id="metadata.8318041"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8318041" id="data.1448525"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata10-2" id="metadata.10605185"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.10605185" id="data.14798727"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata11-2" id="metadata.5150764"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5150764" id="data.13910009"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata12-2" id="metadata.2747482"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.2747482" id="data.14389408"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata13-2" id="metadata.1172029"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.1172029" id="data.9855031"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata14-2" id="metadata.12867373"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.12867373" id="data.15194630"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata15-2" id="metadata.1484112"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.1484112" id="data.15689393"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata16-2" id="metadata.4697698"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.4697698" id="data.3679391"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata17-2" id="metadata.3412432"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.3412432" id="data.16245744"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata18-2" id="metadata.5811752"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5811752" id="data.1886767"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata19-2" id="metadata.13353876"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.13353876" id="data.6013952"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata20-2" id="metadata.3645818"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.3645818" id="data.15412225"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata21-2" id="metadata.7719287"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7719287" id="data.13780787"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata22-2" id="metadata.11838504"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.11838504" id="data.12946000"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata23-2" id="metadata.3772080"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.3772080" id="data.8849050"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata24-2" id="metadata.14045830"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.14045830" id="data.15617866"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data></nmwg:message>  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+'
+----------------------------------------------------------
+http request/response log (time=1365421221)
+
+----------------------------------------------------------
+
+request 1 method: POST
+request 1 uri: http://t248.npitest.psu.edu:9990/perfSONAR_PS/services/SNMPMA
+request 1 head: 'user-agent : SOAP::Lite/Perl/0.68
+soapaction : 
+content-type : text/xml; charset=utf-8
+accept : text/xml multipart/* application/soap
+content-length : 29011
+'
+request 1 ontent: '<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" xmlns:nmwgt="http://ggf.org/ns/nmwg/topology/2.0/" xmlns:snmp="http://ggf.org/ns/nmwg/characteristic/snmp/2.0/" xmlns:discards="http://ggf.org/ns/nmwg/characteristic/discards/2.0/" xmlns:utilization="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:errors="http://ggf.org/ns/nmwg/characteristic/errors/2.0/" type="SetupDataRequest" xmlns:netutil="http://ggf.org/ns/nmwg/characteristic/utilization/2.0/" xmlns:select="http://ggf.org/ns/nmwg/ops/select/2.0/">
+      <nmwg:metadata id="metadata1">
+        <netutil:subject id="subject1">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve201</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">216.27.98.166</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata1-2">
+        <select:subject metadataIdRef="metadata1" id="subject1-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param1-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata1-2" id="data1" />
+      
+      <nmwg:metadata id="metadata2">
+        <netutil:subject id="subject2">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve201</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">216.27.98.166</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata2-2">
+        <select:subject metadataIdRef="metadata2" id="subject2-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param2-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata2-2" id="data2" />
+      
+      <nmwg:metadata id="metadata3">
+        <netutil:subject id="subject3">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve101</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">38.104.114.26</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata3-2">
+        <select:subject metadataIdRef="metadata3" id="subject3-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param3-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata3-2" id="data3" />
+      
+      <nmwg:metadata id="metadata4">
+        <netutil:subject id="subject4">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve101</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">38.104.114.26</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata4-2">
+        <select:subject metadataIdRef="metadata4" id="subject4-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param4-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata4-2" id="data4" />
+      
+      <nmwg:metadata id="metadata5">
+        <netutil:subject id="subject5">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/1</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.62</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata5-2">
+        <select:subject metadataIdRef="metadata5" id="subject5-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param5-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata5-2" id="data5" />
+      
+      <nmwg:metadata id="metadata6">
+        <netutil:subject id="subject6">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/1</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.62</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata6-2">
+        <select:subject metadataIdRef="metadata6" id="subject6-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param6-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata6-2" id="data6" />
+      
+      <nmwg:metadata id="metadata7">
+        <netutil:subject id="subject7">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve132</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">147.73.16.152</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata7-2">
+        <select:subject metadataIdRef="metadata7" id="subject7-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param7-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata7-2" id="data7" />
+      
+      <nmwg:metadata id="metadata8">
+        <netutil:subject id="subject8">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ve132</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">147.73.16.152</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata8-2">
+        <select:subject metadataIdRef="metadata8" id="subject8-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param8-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata8-2" id="data8" />
+      
+      <nmwg:metadata id="metadata9">
+        <netutil:subject id="subject9">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.10</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata9-2">
+        <select:subject metadataIdRef="metadata9" id="subject9-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param9-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata9-2" id="data9" />
+      
+      <nmwg:metadata id="metadata10">
+        <netutil:subject id="subject10">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.10</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata10-2">
+        <select:subject metadataIdRef="metadata10" id="subject10-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param10-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata10-2" id="data10" />
+      
+      <nmwg:metadata id="metadata11">
+        <netutil:subject id="subject11">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">12.177.241.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata11-2">
+        <select:subject metadataIdRef="metadata11" id="subject11-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param11-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata11-2" id="data11" />
+      
+      <nmwg:metadata id="metadata12">
+        <netutil:subject id="subject12">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">12.177.241.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata12-2">
+        <select:subject metadataIdRef="metadata12" id="subject12-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param12-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata12-2" id="data12" />
+      
+      <nmwg:metadata id="metadata13">
+        <netutil:subject id="subject13">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.31.49.1</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata13-2">
+        <select:subject metadataIdRef="metadata13" id="subject13-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param13-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata13-2" id="data13" />
+      
+      <nmwg:metadata id="metadata14">
+        <netutil:subject id="subject14">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet2/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.31.49.1</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata14-2">
+        <select:subject metadataIdRef="metadata14" id="subject14-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param14-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata14-2" id="data14" />
+      
+      <nmwg:metadata id="metadata15">
+        <netutil:subject id="subject15">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.57</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata15-2">
+        <select:subject metadataIdRef="metadata15" id="subject15-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param15-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata15-2" id="data15" />
+      
+      <nmwg:metadata id="metadata16">
+        <netutil:subject id="subject16">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.57</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata16-2">
+        <select:subject metadataIdRef="metadata16" id="subject16-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param16-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata16-2" id="data16" />
+      
+      <nmwg:metadata id="metadata17">
+        <netutil:subject id="subject17">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.53</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata17-2">
+        <select:subject metadataIdRef="metadata17" id="subject17-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param17-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata17-2" id="data17" />
+      
+      <nmwg:metadata id="metadata18">
+        <netutil:subject id="subject18">
+          <nmwgt:interface>
+            <nmwgt:hostName>tb5.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet3/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.255.53</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata18-2">
+        <select:subject metadataIdRef="metadata18" id="subject18-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param18-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata18-2" id="data18" />
+      
+      <nmwg:metadata id="metadata19">
+        <netutil:subject id="subject19">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata19-2">
+        <select:subject metadataIdRef="metadata19" id="subject19-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param19-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata19-2" id="data19" />
+      
+      <nmwg:metadata id="metadata20">
+        <netutil:subject id="subject20">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/2</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.6</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata20-2">
+        <select:subject metadataIdRef="metadata20" id="subject20-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param20-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata20-2" id="data20" />
+      
+      <nmwg:metadata id="metadata21">
+        <netutil:subject id="subject21">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.2</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata21-2">
+        <select:subject metadataIdRef="metadata21" id="subject21-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param21-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata21-2" id="data21" />
+      
+      <nmwg:metadata id="metadata22">
+        <netutil:subject id="subject22">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/4</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.8.2</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata22-2">
+        <select:subject metadataIdRef="metadata22" id="subject22-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param22-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata22-2" id="data22" />
+      
+      <nmwg:metadata id="metadata23">
+        <netutil:subject id="subject23">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.113.9</nmwgt:ipAddress>
+
+            <nmwgt:direction>in</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata23-2">
+        <select:subject metadataIdRef="metadata23" id="subject23-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param23-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata23-2" id="data23" />
+      
+      <nmwg:metadata id="metadata24">
+        <netutil:subject id="subject24">
+          <nmwgt:interface>
+            <nmwgt:hostName>ws1.gw.psu.edu</nmwgt:hostName>
+
+            <nmwgt:ifName>ethernet1/3</nmwgt:ifName>
+
+            <nmwgt:ipAddress type="ipv4">172.30.113.9</nmwgt:ipAddress>
+
+            <nmwgt:direction>out</nmwgt:direction>
+          </nmwgt:interface>
+        </netutil:subject>
+
+        <nmwg:eventType>http://ggf.org/ns/nmwg/characteristic/utilization/2.0</nmwg:eventType>
+      </nmwg:metadata>
+
+      <nmwg:metadata id="metadata24-2">
+        <select:subject metadataIdRef="metadata24" id="subject24-2" />
+        
+        <nmwg:eventType>http://ggf.org/ns/nmwg/ops/select/2.0</nmwg:eventType>
+
+        <select:parameters id="param24-2">
+          <nmwg:parameter name="startTime">1365420600</nmwg:parameter>
+
+          <nmwg:parameter name="endTime">1365420900</nmwg:parameter>
+
+          <nmwg:parameter name="consolidationFunction">AVERAGE</nmwg:parameter>
+
+          <nmwg:parameter name="resolution">300</nmwg:parameter>
+        </select:parameters>
+      </nmwg:metadata>
+
+      <nmwg:data metadataIdRef="metadata24-2" id="data24" />
+          </nmwg:message>
+  </soap:Body>
+</soap:Envelope>
+'
+
+response 1 code: 200
+response 1 msg: 'success'
+response 1 header: 'user-agent : perfSONAR-PS/3.2
+client-response-num : 1
+date : Mon, 08 Apr 2013 11:40:21 GMT
+client-peer : 128.118.46.248:9990
+content-length : 9343
+client-date : Mon, 08 Apr 2013 11:40:21 GMT
+content-type : text/xml
+server : libwww-perl-daemon/5.827
+'
+response 1 content: '<SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+                   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Header/>
+  <SOAP-ENV:Body>
+<nmwg:message xmlns:nmwg="http://ggf.org/ns/nmwg/base/2.0/" id="message.8293527" type="SetupDataResponse"><nmwg:metadata metadataIdRef="metadata1-2" id="metadata.2653423"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.2653423" id="data.10963297"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata2-2" id="metadata.13765976"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.13765976" id="data.8574135"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata3-2" id="metadata.2468658"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.2468658" id="data.8180225"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata4-2" id="metadata.13215364"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.13215364" id="data.11019398"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata5-2" id="metadata.8905176"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8905176" id="data.14998015"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata6-2" id="metadata.15119897"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.15119897" id="data.17256990"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata7-2" id="metadata.4359834"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.4359834" id="data.14637777"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata8-2" id="metadata.8125751"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8125751" id="data.2262014"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata9-2" id="metadata.8061117"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8061117" id="data.10303839"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata10-2" id="metadata.7992440"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7992440" id="data.4104858"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata11-2" id="metadata.14880502"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.14880502" id="data.5697659"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata12-2" id="metadata.16279912"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.16279912" id="data.5991241"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata13-2" id="metadata.17734018"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.17734018" id="data.7933722"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata14-2" id="metadata.5773295"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5773295" id="data.6083871"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata15-2" id="metadata.5187446"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5187446" id="data.11976438"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata16-2" id="metadata.11298885"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.11298885" id="data.1731985"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata17-2" id="metadata.7080587"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7080587" id="data.1351592"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata18-2" id="metadata.6611049"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.6611049" id="data.5069810"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata19-2" id="metadata.14009577"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.14009577" id="data.4361549"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata20-2" id="metadata.14508581"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.14508581" id="data.4790303"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata21-2" id="metadata.5857468"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.5857468" id="data.1091909"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata22-2" id="metadata.7486747"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7486747" id="data.3068385"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata23-2" id="metadata.8759689"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.8759689" id="data.9858738"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data><nmwg:metadata metadataIdRef="metadata24-2" id="metadata.7581294"><nmwg:eventType>error.ma.storage</nmwg:eventType></nmwg:metadata><nmwg:data metadataIdRef="metadata.7581294" id="data.13978616"><nmwgr:datum xmlns:nmwgr="http://ggf.org/ns/nmwg/result/2.0/">Database &quot;/var/lib/perfsonar/snmp_ma/store.xml&quot; returned 0 results for search</nmwgr:datum></nmwg:data></nmwg:message>  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+'
+----------------------------------------------------------

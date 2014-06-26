@@ -1,0 +1,1 @@
+{"FeatureName":"ThroughputGetDestinationInterfaces","Service":"GEANT-Diagnostic","SourceInterface":"64.57.19.6","DestinationInterface":null,"StartTime":null,"EndTime":null,"GetNonCachedData":false}

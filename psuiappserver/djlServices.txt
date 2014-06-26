@@ -1,0 +1,2 @@
+GEANT_production;;http://62.40.105.148:8090/services/MA/HADES/GEANT
+X-WiN;;http://pallando.rrze.uni-erlangen.de:8090/services/MA/HADES/DFN
