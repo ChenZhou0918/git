@@ -10,7 +10,7 @@ import perfsonarserver.database.database_to.DelayJitterLossServiceDB;
 import perfsonarserver.database.exception.FetchNothingException;
 import perfsonarserver.database.exception.FindNothingException;
 import perfsonarserver.database.response_to.*;
-import perfsonarserver.fetchData.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
 
 /**
  * Interface for the database requests.

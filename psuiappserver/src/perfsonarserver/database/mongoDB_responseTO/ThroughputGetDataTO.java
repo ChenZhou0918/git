@@ -1,5 +1,7 @@
 package perfsonarserver.database.mongoDB_responseTO;
 
+import perfsonarserver.database.mongoDBImpl.DataAccess;
+
 /**
  * Transfer Object for Throughput Data
  * 
@@ -73,6 +75,10 @@ public class ThroughputGetDataTO
 		this.timestamp = timestamp;
 	}
 
+	public String getTimestampString()
+	{
+		return DataAccess.convertDateToString(timestamp);
+	}
 	/**
 	 * Get measured throughput
 	 * 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import perfsonarserver.database.mongoDB_responseTO.*;
-import perfsonarserver.fetchData.transferObjects.DelayJitterLossInterfacePair;
+import perfsonarserver.fetchDataAndProcess.transferObjects.DelayJitterLossInterfacePair;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;

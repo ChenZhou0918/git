@@ -9,14 +9,14 @@ import java.util.Scanner;
 import java.util.TimeZone;
 
 import perfsonarserver.database.mongoDBImpl.DataAccess;
-import perfsonarserver.fetchData.PerfsonarRequest;
-import perfsonarserver.fetchData.exception.FetchFailException;
-import perfsonarserver.fetchData.transferObjects.DelayJitterLossData;
-import perfsonarserver.fetchData.transferObjects.DelayJitterLossInterfacePair;
-import perfsonarserver.fetchData.transferObjects.ThroughputData;
-import perfsonarserver.fetchData.transferObjects.ThroughputInterfacePair;
-import perfsonarserver.fetchData.transferObjects.UtilizationData;
-import perfsonarserver.fetchData.transferObjects.UtilizationInterface;
+import perfsonarserver.fetchDataAndProcess.PerfsonarRequest;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.transferObjects.DelayJitterLossData;
+import perfsonarserver.fetchDataAndProcess.transferObjects.DelayJitterLossInterfacePair;
+import perfsonarserver.fetchDataAndProcess.transferObjects.ThroughputData;
+import perfsonarserver.fetchDataAndProcess.transferObjects.ThroughputInterfacePair;
+import perfsonarserver.fetchDataAndProcess.transferObjects.UtilizationData;
+import perfsonarserver.fetchDataAndProcess.transferObjects.UtilizationInterface;
 
 public class FetchData
 {

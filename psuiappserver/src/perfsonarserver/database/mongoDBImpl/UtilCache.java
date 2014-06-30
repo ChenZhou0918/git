@@ -11,10 +11,10 @@ import com.mongodb.DBObject;
 import perfsonarserver.database.mongoDB_DatabaseTO.UtilizationInterfaceDB;
 import perfsonarserver.database.mongoDB_DatabaseTO.UtilizationServiceDB;
 import perfsonarserver.database.mongoDB_cacheThreads.*;
-import perfsonarserver.fetchData.IServerRequest;
-import perfsonarserver.fetchData.PerfsonarRequest;
-import perfsonarserver.fetchData.exception.FetchFailException;
-import perfsonarserver.fetchData.transferObjects.UtilizationInterface;
+import perfsonarserver.fetchDataAndProcess.IServerRequest;
+import perfsonarserver.fetchDataAndProcess.PerfsonarRequest;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.transferObjects.UtilizationInterface;
 
 public class UtilCache extends DJLCache
 {

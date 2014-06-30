@@ -11,7 +11,7 @@ import perfsonarserver.database.mongoDBImpl.UtilCache;
 //import perfsonarserver.fetchData.PerfsonarRequest;
 //import perfsonarserver.fetchData.exception.FetchFailException;
 //import perfsonarserver.fetchData.transferObjects.UtilizationData;
-import perfsonarserver.fetchData.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
 
 
 

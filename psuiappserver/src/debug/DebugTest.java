@@ -8,7 +8,7 @@ import com.eclipsesource.json.JsonObject;
 import perfsonarserver.appConnect.DatabaseRequest;
 import perfsonarserver.appConnect.RequestTO;
 import perfsonarserver.database.mongoDBImpl.DataAccess;
-import perfsonarserver.fetchData.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
 
 /******Only for debug use !!      getDashboardUtil*******************************************************************/
 public class DebugTest {
@@ -29,16 +29,16 @@ RequestTO request=new RequestTO();
 /****test dashboard****/
 
 //request.setFeatureName("DashboardGetUtilizationTop5");
-//request.setFeatureName("DashboardGetOverview");
-//request.setServiceDelayJitterLoss("GEANT_production");
-//request.setServiceUtilization("APAN-JP");
-//request.setServiceThroughput("GEANT-Diagnostic");
-//request.setGetNonCached(true);
+request.setFeatureName("DashboardGetOverview");
+request.setServiceDelayJitterLoss("GEANT_production");
+request.setServiceUtilization("APAN-JP");
+request.setServiceThroughput("GEANT-Diagnostic");
+request.setGetNonCached(true);
 
 
 /****test get Data****/
-request.setFeatureName("DashboardGetLossTop5");
-request.setServiceDelayJitterLoss("X-WiN");
+//request.setFeatureName("DashboardGetLossTop5");
+//request.setServiceDelayJitterLoss("X-WiN");
 //request.setFeatureName("DelayJitterLossGetData");
 //request.setFeatureName("UtilizationGetData");
 //request.setService("APAN-JP");
@@ -89,7 +89,7 @@ JsonObject response=new JsonObject();
 //}
 
 
-System.out.println(values);
+System.out.println("result"+values);
 //System.out.println(values.size());
 		
 	}

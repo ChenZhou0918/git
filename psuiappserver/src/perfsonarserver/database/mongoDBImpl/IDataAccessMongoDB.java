@@ -7,7 +7,7 @@ import perfsonarserver.appConnect.RequestTO;
 import perfsonarserver.database.exception.FetchNothingException;
 import perfsonarserver.database.exception.FindNothingException;
 import perfsonarserver.database.mongoDB_responseTO.*;
-import perfsonarserver.fetchData.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
 
 /**
  * Interface for the database requests.

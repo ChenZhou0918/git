@@ -8,10 +8,10 @@ import java.util.concurrent.ExecutorService;
 import perfsonarserver.database.mongoDB_DatabaseTO.ThroughputInterfaceDB;
 import perfsonarserver.database.mongoDB_DatabaseTO.ThroughputServiceDB;
 import perfsonarserver.database.mongoDB_cacheThreads.*;
-import perfsonarserver.fetchData.IServerRequest;
-import perfsonarserver.fetchData.PerfsonarRequest;
-import perfsonarserver.fetchData.exception.FetchFailException;
-import perfsonarserver.fetchData.transferObjects.ThroughputInterfacePair;
+import perfsonarserver.fetchDataAndProcess.IServerRequest;
+import perfsonarserver.fetchDataAndProcess.PerfsonarRequest;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.transferObjects.ThroughputInterfacePair;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;

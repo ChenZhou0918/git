@@ -11,11 +11,11 @@ import perfsonarserver.database.mongoDBImpl.*;
 import perfsonarserver.database.mongoDB_cacheTO.DataCacheDB;
 import perfsonarserver.database.mongoDB_DatabaseTO.DelayJitterLossDataDB;
 import perfsonarserver.database.exception.FetchNothingException;
-import perfsonarserver.fetchData.IServerRequest;
-import perfsonarserver.fetchData.PerfsonarRequest;
-import perfsonarserver.fetchData.exception.FetchDJLDataException;
-import perfsonarserver.fetchData.exception.FetchFailException;
-import perfsonarserver.fetchData.transferObjects.DelayJitterLossData;
+import perfsonarserver.fetchDataAndProcess.IServerRequest;
+import perfsonarserver.fetchDataAndProcess.PerfsonarRequest;
+import perfsonarserver.fetchDataAndProcess.exception.FetchDJLDataException;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.transferObjects.DelayJitterLossData;
 
 /**
  * Requests DelayJitterLoss data from server and inserts them into database.

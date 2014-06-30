@@ -12,10 +12,10 @@ import perfsonarserver.database.mongoDBImpl.ThroughCache;
 import perfsonarserver.database.mongoDB_DatabaseTO.DelayJitterLossInterfaceDB;
 import perfsonarserver.database.mongoDB_DatabaseTO.ThroughputDataDB;
 import perfsonarserver.database.mongoDB_cacheTO.DataCacheDB;
-import perfsonarserver.fetchData.IServerRequest;
-import perfsonarserver.fetchData.PerfsonarRequest;
-import perfsonarserver.fetchData.exception.FetchFailException;
-import perfsonarserver.fetchData.transferObjects.ThroughputData;
+import perfsonarserver.fetchDataAndProcess.IServerRequest;
+import perfsonarserver.fetchDataAndProcess.PerfsonarRequest;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.transferObjects.ThroughputData;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;

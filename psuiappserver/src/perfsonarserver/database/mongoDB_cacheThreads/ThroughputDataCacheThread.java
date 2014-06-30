@@ -8,11 +8,11 @@ import perfsonarserver.database.mongoDBImpl.*;
 import perfsonarserver.database.mongoDB_DatabaseTO.ThroughputDataDB;
 import perfsonarserver.database.mongoDB_cacheTO.*;
 import perfsonarserver.database.exception.FetchNothingException;
-import perfsonarserver.fetchData.IServerRequest;
-import perfsonarserver.fetchData.PerfsonarRequest;
-import perfsonarserver.fetchData.exception.FetchFailException;
-import perfsonarserver.fetchData.transferObjects.ThroughputData;
-import perfsonarserver.fetchData.transferObjects.ThroughputInterfacePair;
+import perfsonarserver.fetchDataAndProcess.IServerRequest;
+import perfsonarserver.fetchDataAndProcess.PerfsonarRequest;
+import perfsonarserver.fetchDataAndProcess.exception.FetchFailException;
+import perfsonarserver.fetchDataAndProcess.transferObjects.ThroughputData;
+import perfsonarserver.fetchDataAndProcess.transferObjects.ThroughputInterfacePair;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
