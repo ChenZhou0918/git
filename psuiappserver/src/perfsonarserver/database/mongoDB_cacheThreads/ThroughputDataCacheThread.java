@@ -12,6 +12,7 @@ import perfsonarserver.fetchData.IServerRequest;
 import perfsonarserver.fetchData.PerfsonarRequest;
 import perfsonarserver.fetchData.exception.FetchFailException;
 import perfsonarserver.fetchData.transferObjects.ThroughputData;
+import perfsonarserver.fetchData.transferObjects.ThroughputInterfacePair;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -85,8 +86,12 @@ public class ThroughputDataCacheThread extends Thread
 		
 		// Request data from server
 		try
-		{
-			List<ThroughputData> list = request.getThroughputData(serviceURL, srcInterface, destInterface,MID, aktStart, aktEnd);
+		{ThroughputInterfacePair ti=new ThroughputInterfacePair();
+		ti.setDestAddress(destInterface);
+		ti.setSrcAddress(srcInterface);
+		ti.setMid(MID);
+		
+			List<ThroughputData> list = request.getThroughputData(serviceURL, ti, aktStart, aktEnd);
 			Iterator<ThroughputData> it = list.iterator();
 
 			// Convert data into database format

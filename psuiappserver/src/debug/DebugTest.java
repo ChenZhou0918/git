@@ -37,7 +37,7 @@ RequestTO request=new RequestTO();
 
 
 /****test get Data****/
-request.setFeatureName("DashboardLoss");
+request.setFeatureName("DashboardGetLossTop5");
 request.setServiceDelayJitterLoss("X-WiN");
 //request.setFeatureName("DelayJitterLossGetData");
 //request.setFeatureName("UtilizationGetData");
@@ -48,8 +48,8 @@ request.setServiceDelayJitterLoss("X-WiN");
 //request.setSourceInterface("Aachen_DFN");
 //request.setDestinationInterface("Berlin_ADH_DFN");
 //request.setSourceInterface("UK_London_GN");
-//request.setStartDate("2014-06-15 20-16-29-000");
-//request.setEndDate("2014-06-15 24-18-40-000");
+//request.setStartDate("2014-06-24 12-16-29-000");
+//request.setEndDate("2014-06-24 14-18-40-000");
 
 /****test get service****/
 //request.setFeatureName("DelayJitterLossGetService");

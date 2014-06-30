@@ -87,7 +87,6 @@ public class TopDJLCacheThread implements Runnable {
 			List<DelayJitterLossInterfacePair> list2;
 				list2 = request.getTopLossInterfaces(serviceURL,aktStart,aktEnd);
 				Iterator<DelayJitterLossInterfacePair> it2= list2.iterator();
-		
 	
 			
 			// Convert data into database format
@@ -110,11 +109,7 @@ public class TopDJLCacheThread implements Runnable {
 			{db.remove(DataAccess.TOPLOSSINTERFACES_COLLECTION,currentObject);}
 			
 			db.insert(DataAccess.TOPLOSSINTERFACES_COLLECTION, TopLossInterfaces );
-			
-			
-			
-			
-			
+//			
 			/***********************************insert top 5 Delay data********************************************/
 		
 				List<DelayJitterLossData> list = request.getTopFiveDelay(serviceURL,aktStart,aktEnd);
@@ -131,7 +126,7 @@ public class TopDJLCacheThread implements Runnable {
 				}
 				// Insert data into database
 				System.out.println("inserted delay List      "+TopDelayList );
-				
+////				
 				BasicDBObject search=new BasicDBObject(DelayJitterLossDataDB.SERVICE_COL,serviceName);
 				
 				//remove old top five data
@@ -145,8 +140,10 @@ public class TopDJLCacheThread implements Runnable {
 				
 				/***********************************insert top 5 jitter data********************************************/
 				
-				 list = request.getTopFiveJitter(serviceURL,aktStart,aktEnd);
-				 it = list.iterator();
+//			List<DelayJitterLossData> 
+			list= request.getTopFiveJitter(serviceURL,aktStart,aktEnd);
+//			Iterator<DelayJitterLossData>  
+			it = list.iterator();
 		
 				
 				// Convert data into database format
@@ -164,7 +161,8 @@ public class TopDJLCacheThread implements Runnable {
 				
 				
 				//remove old top five data
-			   searchList=db.find(DataAccess.TOPJITTERDATA_COLLECTION, search);
+//				List<DBObject> 
+				searchList=db.find(DataAccess.TOPJITTERDATA_COLLECTION, search);
 				System.out.println(searchList.size());
 	
 				for(DBObject currentObject:searchList)

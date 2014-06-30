@@ -1,7 +1,6 @@
 package perfsonarserver.database.mongoDB_cacheThreads;
 
 import java.util.Iterator;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -98,7 +97,7 @@ public class DelayJitterLossDataCacheThread extends Thread
 		while (it.hasNext())
 		{
 			DelayJitterLossData djld = it.next();
-			DelayJitterLossDataDB djlddb = new DelayJitterLossDataDB(djld.getTime(), djld.getMaxDelay(), djld.getMinDelay(), djld.getMaxIpdvJitter(), djld.getMinIpdvJitter(), djld.getLoss(), serviceName, srcInterface, destInterface);
+			DelayJitterLossDataDB djlddb = new DelayJitterLossDataDB(djld.getTime(), djld.getMaxDelay(),djld.getMedDelay(), djld.getMinDelay(), djld.getMaxIpdvJitter(),djld.getMedIpdvJitter(),djld.getMinIpdvJitter(), djld.getLoss(), serviceName, srcInterface, destInterface);
 			DBObject dbObj = djlddb.toDBObject();
 			ll.add(dbObj);
 		}

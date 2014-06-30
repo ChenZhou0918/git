@@ -13,10 +13,14 @@ public class DelayJitterLossDataTO
 	private long timestamp;
 	/** maximal delay */
 	private double maxDelay;
+	/** middle delay */
+	private double medDelay;
 	/** minimal delay */
 	private double minDelay;
 	/** maximal jitter */
 	private double maxJitter;
+	/** middle jitter */
+	private double medJitter;
 	/** minimal jitter */
 	private double minJitter;
 	/** loss */
@@ -29,8 +33,10 @@ public class DelayJitterLossDataTO
 	{
 		this.timestamp = 0;
 		this.maxDelay = 0;
+		this.medDelay = 0;
 		this.minDelay = 0;
 		this.maxJitter = 0;
+		this.medJitter = 0;
 		this.minJitter = 0;
 		this.loss = 0;
 	}
@@ -175,7 +181,37 @@ public class DelayJitterLossDataTO
 	{
 		this.minJitter = minJitter;
 	}
+	/**
+	 * @return the medDelay
+	 */
+	public double getMedDelay()
+	{
+		return medDelay;
+	}
+	/**
+	 * @param medDelay
+	 *            the medDelay to set
+	 */
+	public void setMedDelay(double medDelay)
+	{
+		this.medDelay = medDelay;
+	}
+	/**
+	 * @return the medIpdvJitter
+	 */
+	public double getMedJitter()
+	{
+		return medJitter;
+	}
 
+	/**
+	 * @param medIpdvJitter
+	 *            the medIpdvJitter to set
+	 */
+	public void setMedJitter(double medJitter)
+	{
+		this.medJitter = medJitter;
+	}
 	/**
 	 * Get loss
 	 * 

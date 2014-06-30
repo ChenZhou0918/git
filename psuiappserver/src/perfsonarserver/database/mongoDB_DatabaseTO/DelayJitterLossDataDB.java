@@ -31,7 +31,11 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 	/** constant for col "srcInterface" inside database */
 	public static final String SRCINTERFACE_COL = "srcInterface";
 	/** constant for col "destInterface" inside database */
-	public static final String DESTINTERFACE_COL = "destInterface";
+	public static final String DESTINTERFACE_COL = "DestInterface";
+	
+	/** constant for col "destInterface" inside database */
+	public static final String MEDDELAY_COL = "medDelay";
+	public static final String MEDJITTER_COL = "medJitter";
 
 	/** service name */
 	private String serviceName;
@@ -39,6 +43,10 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 	private String srcInterface;
 	/** destination interface */
 	private String destInterface;
+	/** middle delay */
+	private double medDelay;
+	/** middle jitter */
+	private double medJitter;
 
 	/**
 	 * Constructor for an empty object
@@ -80,6 +88,15 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 		this.srcInterface = srcInterface;
 		this.destInterface = destInterface;
 	}
+	public DelayJitterLossDataDB(long timestamp, double maxDelay, double medDelay,double minDelay, double maxJitter, double medJitter,double minJitter, int loss, String service, String srcInterface, String destInterface)
+	{
+		super(timestamp, maxDelay, minDelay, maxJitter, minJitter, loss);
+		this.medDelay=medDelay;
+		this.medJitter=medJitter;
+		this.serviceName = service;
+		this.srcInterface = srcInterface;
+		this.destInterface = destInterface;
+	}
 
 	/**
 	 * Converts this java-object into a database-object
@@ -92,8 +109,10 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 		{
 			dbObjDataTO.append(TIMESTAMP_COL, this.getTimestamp());
 			dbObjDataTO.append(MAXDELAY_COL, this.getMaxDelay());
+			dbObjDataTO.append(MEDDELAY_COL, this.getMedDelay());
 			dbObjDataTO.append(MINDELAY_COL, this.getMinDelay());
 			dbObjDataTO.append(MAXJITTER_COL, this.getMaxJitter());
+			dbObjDataTO.append(MEDJITTER_COL, this.getMedJitter());
 			dbObjDataTO.append(MINJITTER_COL, this.getMinJitter());
 			dbObjDataTO.append(LOSS_COL, this.getLoss());
 			dbObjDataTO.append(SERVICE_COL, this.getServiceName());
@@ -116,8 +135,10 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 		{
 			djlDataTO.setTimestamp((long) dbObj.get(TIMESTAMP_COL));
 			djlDataTO.setMaxDelay((double) dbObj.get(MAXDELAY_COL));
+			djlDataTO.setMedDelay((double) dbObj.get(MEDDELAY_COL));
 			djlDataTO.setMinDelay((double) dbObj.get(MINDELAY_COL));
 			djlDataTO.setMaxJitter((double) dbObj.get(MAXJITTER_COL));
+			djlDataTO.setMedJitter((double) dbObj.get(MEDJITTER_COL));
 			djlDataTO.setMinJitter((double) dbObj.get(MINJITTER_COL));
 			djlDataTO.setLoss((int) dbObj.get(LOSS_COL));
 		}
@@ -156,8 +177,10 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 		{
 			djlDataDB.setTimestamp((long) dbObj.get(TIMESTAMP_COL));
 			djlDataDB.setMaxDelay((double) dbObj.get(MAXDELAY_COL));
+			djlDataDB.setMedDelay((double) dbObj.get(MEDDELAY_COL));
 			djlDataDB.setMinDelay((double) dbObj.get(MINDELAY_COL));
 			djlDataDB.setMaxJitter((double) dbObj.get(MAXJITTER_COL));
+			djlDataDB.setMedJitter((double) dbObj.get(MEDJITTER_COL));
 			djlDataDB.setMinJitter((double) dbObj.get(MINJITTER_COL));
 			djlDataDB.setLoss((int) dbObj.get(LOSS_COL));
 			djlDataDB.setDestInterface((String) dbObj.get(DESTINTERFACE_COL));
@@ -229,5 +252,37 @@ public class DelayJitterLossDataDB extends DelayJitterLossDataTO
 	{
 		this.destInterface = destInterface;
 	}
+	/**
+	 * @return the medDelay
+	 */
+	public double getMedDelay()
+	{
+		return medDelay;
+	}
+	/**
+	 * @param medDelay
+	 *            the medDelay to set
+	 */
+	public void setMedDelay(double medDelay)
+	{
+		this.medDelay = medDelay;
+	}
+	/**
+	 * @return the medIpdvJitter
+	 */
+	public double getMedJitter()
+	{
+		return medJitter;
+	}
 
+	/**
+	 * @param medIpdvJitter
+	 *            the medIpdvJitter to set
+	 */
+	public void setMedJitter(double medJitter)
+	{
+		this.medJitter = medJitter;
+	}
+
+	
 }

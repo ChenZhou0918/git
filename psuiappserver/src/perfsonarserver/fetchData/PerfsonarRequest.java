@@ -85,13 +85,7 @@ public class PerfsonarRequest implements IServerRequest
 	/**************************************************************************************************************************/
 	/*                                             Delay Jitter Loss                                                          */
 	/**************************************************************************************************************************/
-		@Override
-	public List<DelayJitterLossInterfacePair> getDelayJitterLossData(
-			String serverURL, List<DelayJitterLossInterfacePair> list,
-			long startTime, long endTime) throws FetchFailException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override/**
 	 * fetch DJL data from a single interface
@@ -413,22 +407,7 @@ public class PerfsonarRequest implements IServerRequest
 			throw new FetchDJLDataException();
 	}
 
-	@Override
-	public List<ThroughputData> getThroughputData(String serverURL,
-			String source, String dest, String MID, long startTime, long endTime)
-			throws FetchFailException {
-		ThroughputInterfacePair pair = new ThroughputInterfacePair(source, dest, MID);
-		List<ThroughputInterfacePair> list = new ArrayList<>();
-		list.add(pair);
 	
-		list = getTData(list, startTime, endTime, serverURL);
-	
-		if (!list.isEmpty() && !(list.get(0).getData()==null))
-			return list.get(0).getData();
-		else
-			throw new FetchThroughDataExcpetion();
-	
-	}
 
 	/****************Fetch Top K utilization *********************/
 	
@@ -579,151 +558,158 @@ public class PerfsonarRequest implements IServerRequest
 	
 		
 	
-	/**
-	 * fetch top 5 DJL data
-	 * 
-	 * @param startTime
-	 *            Start time of measurement period in milliseconds
-	 * @param endTime
-	 *            End time of measurement period in milliseconds
-	 * @param serverURL
-	 *            Server URL of service
-	 * @return A list with 5 DJL data
-	 *         
-	 */
 	
-	public List<DelayJitterLossData> getTopFiveDelay(String serverURL, long startTime, long endTime) throws FetchFailException
-	{
-
-		List<DelayJitterLossInterfacePair> DIList;
-		List<DelayJitterLossData> DDList= new LinkedList<DelayJitterLossData>();
-		List<DelayJitterLossData> MaximumDDList = new LinkedList<DelayJitterLossData>();
-		
-		
-		DIList=this.getDelayJitterLossInterfacePairs(serverURL,startTime,endTime);
-		System.out.println(DIList.size());
-		
-		// create a min-heap, initialize the top 5 array
-		DelayJitterLossData[] top= new DelayJitterLossData[5];
-		DelayMinHeap heap = new DelayMinHeap(top,true); 
-		
-		
-//		for(DelayJitterLossInterfacePair DI:DIList){
-		for(int i=0;i<=20;i++){           // for test, only choose a part of interfaces
-			DelayJitterLossInterfacePair DI=DIList.get(i);
-		    String currentDestInterface=DI.getDestination();
-		    String currentSrcInterface=DI.getSource();
-// for each interface, get a list of data
-		DDList=this.getDelayJitterLossData(serverURL, currentSrcInterface,currentDestInterface, startTime, endTime);
-//		DDList=this.getDelayJitterLossData(serverURL, "Aachen_DFN","Augsburg_DFN", startTime, endTime);
-		// cluster algorithm: divide data of each interface into several pseudo clusters
-		if(DDList.size()!=0)	
-			{
-			LinkedList<Cluster> pseudoClusterLists = new LinkedList<Cluster>();
-			LinkedList<Cluster> realClusterLists = new LinkedList<Cluster>();
-			double threshold=0.00004;// threshold = 40 microseconds 
-			Cluster currentcluster=new Cluster(DDList.get(0));
-           
-			for(DelayJitterLossData dldata:DDList)
-			{   
- 				if(Math.abs(dldata.getMinDelay()-currentcluster.getReferPoint().getMinDelay())<threshold)
-				{
-					currentcluster.merge(dldata);
-				}
-				
-				else { 
-					pseudoClusterLists.add(currentcluster);
-				       currentcluster=new Cluster(dldata);
-
-				     }
-					
-			}
-			
-			pseudoClusterLists.add(currentcluster);
-			
-			System.out.println("pseudo cluster size"+pseudoClusterLists.size());
-			
-			
-			// check whether the clusters above are real. if not, merge it
-			realClusterLists.add(pseudoClusterLists.get(0));
-			Cluster refercluster;
-			Cluster nextcluster;
-		   
-			for(int j=1;j<pseudoClusterLists.size();j++)
-			{  
-				 refercluster=realClusterLists.getLast();
-				 nextcluster=pseudoClusterLists.get(j);
-				
-				if(nextcluster.getSize()<3||Math.abs(refercluster.getIntrinsicDelay()-nextcluster.getIntrinsicDelay())<threshold)
-				{  
-					realClusterLists.remove();
-					refercluster.merge(nextcluster);
-					realClusterLists.add(refercluster);
-				}
-				else
-				{
-				   realClusterLists.add(nextcluster);	
-				}
-				
-			}
-			System.out.println("Real cluster size"+realClusterLists.size());
-		
-		int HeapSize=(int)(DDList.size()*0.01)+1;
-		DelayJitterLossData[] topOnePercent= new DelayJitterLossData[HeapSize];
-		DelayMinHeap heap2 = new DelayMinHeap(topOnePercent,true); 
-		List<DelayJitterLossData> ClusterDDList = new LinkedList<DelayJitterLossData>();
-		int maxIndexInCluster=0;
-		for(Cluster cluster:realClusterLists){	
-		 double c =cluster.getIntrinsicDelay();
-		
-			// use min-heap to calculate top 1%
-		for(DelayJitterLossData currentData:cluster.getData())
-		{
-			DelayJitterLossData root=heap2.getRoot();	
-//		 System.out.println("route delay:"+currentData.getMaxDelay()+"   C:"+c);
-		currentData.setMaxDelayPercentage(100*(currentData.getMaxDelay()-c)/c);//change value to percentage compare to intrinsic delay
-	
-		if(currentData.getMaxDelayPercentage()>root.getMaxDelayPercentage())
-		{heap2.setRoot(currentData);}
-		}
-		// pick out maximum in a cluster
-			topOnePercent[0].setSender(currentSrcInterface);
-			topOnePercent[0].setReceiver(currentDestInterface);
-		
-		    ClusterDDList.add(topOnePercent[0]);
-		}
-		// pick out maximum of a interface 
-		System.out.println("Cluster data: "+ClusterDDList.size());
-		for(int k=0;k<ClusterDDList.size();k++)
-			
-		{
-			if(ClusterDDList.get(k).getMaxDelayPercentage()>ClusterDDList.get(maxIndexInCluster).getMaxDelayPercentage())
-				maxIndexInCluster=k;
-		}
-			MaximumDDList.add(ClusterDDList.get(maxIndexInCluster));
-		}
-		}
-		System.out.println("Interface data: "+MaximumDDList.size());
-        //choose top five interfaces
-			for(DelayJitterLossData currentData:MaximumDDList){
-				DelayJitterLossData root=heap.getRoot();
-				if(currentData.getMaxDelayPercentage()>root.getMaxDelayPercentage())
-					{heap.setRoot(currentData);}
-				System.out.println(heap.getRoot().toString());
-			}
-			
-			List<DelayJitterLossData> topList =new LinkedList<DelayJitterLossData>();
-			for(int i=0;i<=4;i++){
-				topList.add(top[i]);
-			}
-			System.out.println(topList);
-			return topList;
-			}
 	
 
 	
 	/*************************************/
 	
+	/**
+		 * fetch top 5 DJL data
+		 * 
+		 * @param startTime
+		 *            Start time of measurement period in milliseconds
+		 * @param endTime
+		 *            End time of measurement period in milliseconds
+		 * @param serverURL
+		 *            Server URL of service
+		 * @return A list with 5 DJL data
+		 *         
+		 */
+		
+		public List<DelayJitterLossData> getTopFiveDelay(String serverURL, long startTime, long endTime) throws FetchFailException
+		{
+	
+			List<DelayJitterLossInterfacePair> DIList;
+			List<DelayJitterLossData> DDList= new LinkedList<DelayJitterLossData>();
+			List<DelayJitterLossData> MaximumDDList = new LinkedList<DelayJitterLossData>();
+			
+			
+			DIList=this.getDelayJitterLossInterfacePairs(serverURL,startTime,endTime);
+			System.out.println(DIList.size());
+			
+			// create a min-heap, initialize the top 5 array
+			DelayJitterLossData[] top= new DelayJitterLossData[5];
+			DelayMinHeap heap = new DelayMinHeap(top,true); 
+			
+			
+			for(DelayJitterLossInterfacePair DI:DIList){
+	//		for(int i=0;i<=20;i++){           // for test, only choose a part of interfaces
+	//			DelayJitterLossInterfacePair DI=DIList.get(i);
+			    String currentDestInterface=DI.getDestination();
+			    String currentSrcInterface=DI.getSource();
+	// for each interface, get a list of data
+			DDList=this.getDelayJitterLossData(serverURL, currentSrcInterface,currentDestInterface, startTime, endTime);
+	//		DDList=this.getDelayJitterLossData(serverURL, "Aachen_DFN","Augsburg_DFN", startTime, endTime);
+			// cluster algorithm: divide data of each interface into several pseudo clusters
+			if(DDList!=null)	
+				{
+				LinkedList<Cluster> pseudoClusterLists = new LinkedList<Cluster>();
+				LinkedList<Cluster> realClusterLists = new LinkedList<Cluster>();
+				double threshold=0.00004;// threshold = 40 microseconds 
+				Cluster currentcluster=new Cluster(DDList.get(0));
+	           
+				for(DelayJitterLossData dldata:DDList)
+				{   
+	 				if(Math.abs(dldata.getMinDelay()-currentcluster.getReferPoint().getMinDelay())<threshold)
+					{
+						currentcluster.merge(dldata);
+					}
+					
+					else { 
+						pseudoClusterLists.add(currentcluster);
+					       currentcluster=new Cluster(dldata);
+	
+					     }
+						
+				}
+				
+				pseudoClusterLists.add(currentcluster);
+				
+				System.out.println("pseudo cluster size"+pseudoClusterLists.size());
+				
+				
+				// check whether the clusters above are real. if not, merge it
+				realClusterLists.add(pseudoClusterLists.get(0));
+				Cluster refercluster;
+				Cluster nextcluster;
+			   
+				for(int j=1;j<pseudoClusterLists.size();j++)
+				{  
+					 refercluster=realClusterLists.getLast();
+					 nextcluster=pseudoClusterLists.get(j);
+					
+					if(nextcluster.getSize()<3||Math.abs(refercluster.getIntrinsicDelay()-nextcluster.getIntrinsicDelay())<threshold)
+					{  
+						realClusterLists.remove();
+						refercluster.merge(nextcluster);
+						realClusterLists.add(refercluster);
+					}
+					else
+					{
+					   realClusterLists.add(nextcluster);	
+					}
+					
+				}
+				System.out.println("Real cluster size"+realClusterLists.size());
+			
+			int HeapSize=(int)(DDList.size()*0.01)+1;
+			DelayJitterLossData[] topOnePercent= new DelayJitterLossData[HeapSize];
+			DelayMinHeap heap2 = new DelayMinHeap(topOnePercent,true); 
+			List<DelayJitterLossData> ClusterDDList = new LinkedList<DelayJitterLossData>();
+			int maxIndexInCluster=0;
+			for(Cluster cluster:realClusterLists){	
+			 double c =cluster.getIntrinsicDelay();
+			
+				// use min-heap to calculate top 1%
+			for(DelayJitterLossData currentData:cluster.getData())
+			{
+				DelayJitterLossData root=heap2.getRoot();	
+	//		 System.out.println("route delay:"+currentData.getMaxDelay()+"   C:"+c);
+				if(c!=0)//ignore infinity percentage when c=0
+			currentData.setMaxDelayPercentage(100*(currentData.getMaxDelay()-c)/c);//change value to percentage compare to intrinsic delay
+				else currentData.setMaxDelayPercentage(0);
+				
+			if(currentData.getMaxDelayPercentage()>root.getMaxDelayPercentage())
+			{heap2.setRoot(currentData);
+			}
+			}
+			// pick out maximum in a cluster
+				topOnePercent[0].setSender(currentSrcInterface);
+				topOnePercent[0].setReceiver(currentDestInterface);
+			
+			    ClusterDDList.add(topOnePercent[0]);
+			}
+			// pick out maximum of a interface 
+			System.out.println("Cluster data: "+ClusterDDList.size());
+			for(int k=0;k<ClusterDDList.size();k++)
+				
+			{
+				if(ClusterDDList.get(k).getMaxDelayPercentage()>ClusterDDList.get(maxIndexInCluster).getMaxDelayPercentage())
+					maxIndexInCluster=k;
+			}
+				MaximumDDList.add(ClusterDDList.get(maxIndexInCluster));
+			}
+			}
+			System.out.println("Interface data: "+MaximumDDList.size());
+	        //choose top five interfaces
+				for(DelayJitterLossData currentData:MaximumDDList){
+					DelayJitterLossData root=heap.getRoot();
+					if(currentData.getMaxDelayPercentage()>root.getMaxDelayPercentage())
+						{heap.setRoot(currentData);}
+					System.out.println(heap.getRoot().toString());
+				}
+				
+				List<DelayJitterLossData> topList =new LinkedList<DelayJitterLossData>();
+				for(int i=0;i<=4;i++){
+					topList.add(top[i]);
+				}
+				System.out.println(topList);
+				return topList;
+				}
+
+
+
 	/**
 	 * fetch top 5 jitter data
 	 * 
@@ -752,16 +738,16 @@ public class PerfsonarRequest implements IServerRequest
 		DelayJitterLossData[] top= new DelayJitterLossData[5];
 		JitterMinHeap heap = new JitterMinHeap(top,true); 
 		// for each interface, get a list of data, then choose the maximum data and put them into a list
-//		for(DelayJitterLossInterfacePair JI:JIList){
-		for(int i=0;i<=20;i++){          // for test, only choose a part of interfaces
-			DelayJitterLossInterfacePair JI=JIList.get(i);
+		for(DelayJitterLossInterfacePair JI:JIList){
+//		for(int i=10;i<=20;i++){          // for test, only choose a part of interfaces
+//			DelayJitterLossInterfacePair JI=JIList.get(i);
 			
 		String currentDestInterface=JI.getDestination();
 		String currentSrcInterface=JI.getSource();
 
 		JDList=this.getDelayJitterLossData(serverURL, currentSrcInterface,currentDestInterface, startTime, endTime);
 		System.out.println(JDList.size());
-		if(JDList.size()!=0)	
+		if(JDList!=null)	
 			{
 			//use min-heap to calculate top 1% percent
 			int HeapSize=(int)(JDList.size()*0.01)+1;
@@ -771,7 +757,9 @@ public class PerfsonarRequest implements IServerRequest
 			for(DelayJitterLossData currentData:JDList)
 			{
 				DelayJitterLossData root=heap2.getRoot();	
+				if(currentData.getMinDelay()!=0)
 				currentData.setMaxJitterPercentage(Math.abs(currentData.getMaxIpdvJitter()/currentData.getMinDelay()*100));
+				else currentData.setMaxJitterPercentage(0);
 		
 			if(Math.abs(currentData.getMaxJitterPercentage())>Math.abs(root.getMaxJitterPercentage()))
 			{heap2.setRoot(currentData);}
@@ -811,9 +799,9 @@ public class PerfsonarRequest implements IServerRequest
 		System.out.println(LIList.size());
 
 		
-//		for(DelayJitterLossInterfacePair LI:LIList){
-		for(int i=5;i<=20;i++){            // for test, only choose a part of interfaces
-			DelayJitterLossInterfacePair LI=LIList.get(i);
+		for(DelayJitterLossInterfacePair LI:LIList){
+//		for(int i=5;i<=20;i++){            // for test, only choose a part of interfaces
+//			DelayJitterLossInterfacePair LI=LIList.get(i);
 			int numberOfLoss=0;
 		String currentDestInterface=LI.getDestination();
 		String currentSrcInterface=LI.getSource();
@@ -1080,7 +1068,7 @@ public class PerfsonarRequest implements IServerRequest
 		}
 		catch (FetchFailException e)
 		{
-			throw new FetchDJLDataException();
+		throw new FetchDJLDataException();
 		}
 	}
 
@@ -1322,6 +1310,10 @@ public class PerfsonarRequest implements IServerRequest
 			e.printStackTrace();
 		}
 	}
+
+
+
+
 
 
 

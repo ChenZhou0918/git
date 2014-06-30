@@ -231,10 +231,6 @@ public class JsonHandler
 		}
 		}
 		
-		else if (request.getFeatureName().indexOf("DashboardLoss") != -1)
-		{
-	response.add("TopLossInterfaces",values);
-		}
 		
 		
 		else if (request.getFeatureName().indexOf("DashboardGetOverview") != -1)

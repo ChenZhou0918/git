@@ -13,8 +13,6 @@ import perfsonarserver.database.mongoDBImpl.UtilCache;
 //import perfsonarserver.fetchData.transferObjects.UtilizationData;
 import perfsonarserver.fetchData.exception.FetchFailException;
 
-
-
 /**
  * update db top data
  * 
@@ -32,8 +30,8 @@ public static void main(String[] args) throws FetchFailException{
 	TopDJLCacheThread topDJLThread;
 
 	/***************** test top 5 DJL 4 Services *******************/
-	topDJLThread= new TopDJLCacheThread("http://62.40.105.148:8090/services/MA/HADES/GEANT", "GEANT_production", start, end);
-	topDJLThread.run();
+//	topDJLThread= new TopDJLCacheThread("http://62.40.105.148:8090/services/MA/HADES/GEANT", "GEANT_production", start, end);
+//	topDJLThread.run();
 
 	topDJLThread= new TopDJLCacheThread("http://pallando.rrze.uni-erlangen.de:8090/services/MA/HADES/DFN","X-WiN",start,end);
 	topDJLThread.run();

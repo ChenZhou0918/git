@@ -161,21 +161,21 @@ public class DatabaseRequest
 			return dj_valuesArray;
 			
 			 
-		  case "DashboardLoss":
+		  case "DashboardGetLossTop5":
 			List<DashboardLossGetDataTO> dl_list = new LinkedList<DashboardLossGetDataTO>();
 			dl_list = dataAccess.getDashboardLossGetData(request);
 
 			JsonArray dl_valuesArray = new JsonArray();
-			
+			int n=0;
 			 for (DashboardLossGetDataTO item : dl_list) {
-			 JsonObject currentValue = new JsonObject();
+				 if(n<=4)
+			 {JsonObject currentValue = new JsonObject();
 			 currentValue.add("Service", item.getServiceName());
 				currentValue.add("SrcInterface",item.getSrcInterface());
 				currentValue.add("DestInterface",item.getDestInterface());
 				currentValue.add("LossPackets:",item.getLossNumber());
-			
-			
-			 dl_valuesArray.add(currentValue);
+			 dl_valuesArray.add(currentValue);}
+				 n++;
 			 }
 		
 			return dl_valuesArray;
@@ -263,8 +263,10 @@ public class DatabaseRequest
 
 					currentValue.add("date", item.getTimestampString());
 					currentValue.add("maxDelay", item.getMaxDelay());
+					currentValue.add("medDelay", item.getMedDelay());
 					currentValue.add("minDelay", item.getMinDelay());
 					currentValue.add("maxJitter", item.getMaxJitter());
+					currentValue.add("medJitter", item.getMedJitter());
 					currentValue.add("minJitter", item.getMinJitter());
 					currentValue.add("loss", item.getLoss());
 

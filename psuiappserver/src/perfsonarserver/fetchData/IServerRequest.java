@@ -24,21 +24,7 @@ import perfsonarserver.fetchData.transferObjects.*;
 public interface IServerRequest
 {
 
-	/**
-	 * Fills the interfaces in the list with data.
-	 * 
-	 * @param serverURL
-	 *            Server URL of service
-	 * @param list
-	 *            List of DelayJitterLossInterfacePairs
-	 * @param startTime
-	 *            Start time of measurement period in milliseconds
-	 * @param endTime
-	 *            End time of measurement period in milliseconds
-	 * 
-	 * @return List with Interfacepairs which can contain data in its data list
-	 */
-	public List<DelayJitterLossInterfacePair> getDelayJitterLossData(String serverURL, List<DelayJitterLossInterfacePair> list, long startTime, long endTime) throws FetchFailException;
+	
 
 	/**
 	 * Gets data for an interface pair in a specific period.
@@ -105,7 +91,7 @@ public interface IServerRequest
 	 *            End time of measurement period in milliseconds
 	 * @return List of ThroughputData Objects
 	 */
-	public List<ThroughputData> getThroughputData(String serverURL, String source, String dest,String MID, long startTime, long endTime) throws FetchFailException;
+	
 	
 	
 	public List<UtilizationData> getUtilizationDataMDB(String serverURL, String name, String direction, long startTime, long endTime) throws FetchFailException;
